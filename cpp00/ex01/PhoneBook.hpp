@@ -1,9 +1,10 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
+#include <cstdio>
 #include <iostream>
 #include <string>
-#include "contact.hpp"
+#include "Contact.hpp"
 
 
 class	PhoneBook
@@ -13,7 +14,7 @@ class	PhoneBook
 		int		idx;
 	public:
 		PhoneBook();
-		~PhoneBook();
+		//~PhoneBook();
 		void	AddContact();
 		void	DisplayContact();
 		void	SearchIndex();

@@ -33,17 +33,20 @@ void	Contact::DisplayContact(int i)
 	std::cout<<"|"<<std::setw(10)<<i;
 	if (first_name.length() > 10)
 	{
-		str_temp = first_name;
+		str_temp = first_name.substr(0, 10);
 		str_temp[9] = '.';
-		str_temp[10] = '\0';
 	}
 	std::cout<<"|"<<std::setw(10)<<str_temp;
 	if (last_name.length() > 10)
 	{
-		str_temp = last_name;
+		str_temp = last_name.substr(0, 10);
 		str_temp[9] = '.';
-		str_temp[10] = '\0';
 	}
 	std::cout<<"|"<<std::setw(10)<<str_temp;
-	std::cout<<"|"<<std::setw(10)<<phone_number<<"|"<<std::endl;
+	if (nick_name.length() > 10)
+	{
+		str_temp = nick_name.substr(0, 10);
+		str_temp[9] = '.';
+	}
+	std::cout<<"|"<<std::setw(10)<<str_temp<<"|"<<std::endl;
 }
