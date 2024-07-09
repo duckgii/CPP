@@ -19,6 +19,7 @@ class	Contact
 		int				IsNum(std::string str);
 		std::string		GetString(std::string str);
 		int				IsPrintable(std::string str);
+		void			ClearCin();
 };
 
 #endif

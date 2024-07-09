@@ -10,6 +10,7 @@ int	main()
 	{
 		std::cout<<"Input command [1. ADD, 2. SEARCH, 3. EXIT] : ";
 		std::getline(std::cin, input);
+		phonebook.ClearCin();
 		if (input == "ADD" || input == "1")
 			phonebook.AddContact();
 		else if (input == "SEARCH" || input == "2")
@@ -21,7 +22,5 @@ int	main()
 			break;
 		else
 			std::cout<<"Input command is wrong!!"<<std::endl;
-		std::cin.clear();
-		clearerr(stdin);
 	}
 }

@@ -22,27 +22,14 @@ std::string Contact::GetString(std::string str)
 
 	std::cout<<str;
 	std::getline(std::cin, ret);
-	if (std::cin.eof())
-	{
-		std::cin.clear();
-		clearerr(stdin);
-	}
+	Contact::ClearCin();
 	while (IsPrintable(ret) == 0 || ret == "")
 	{
-		if (IsPrintable(ret) == 1 && ret == "")
+		if (ret == "")
 			std::cout<<std::endl;
 		std::cout<<str;
 		std::getline(std::cin, ret);
-		if (std::cin.eof())
-		{
-			std::cin.clear();
-			clearerr(stdin);
-		}
-	}
-	if (std::cin.eof())
-	{
-		std::cin.clear();
-		clearerr(stdin);
+		Contact::ClearCin();
 	}
 	return (ret);
 }
@@ -101,4 +88,13 @@ void	Contact::DisplayContact(int i)
 		str_temp[9] = '.';
 	}
 	std::cout<<"|"<<std::setw(10)<<str_temp<<"|"<<std::endl;
+}
+
+void	Contact::ClearCin()
+{
+	if (std::cin.eof())
+	{
+		std::cin.clear();
+		clearerr(stdin);
+	}
 }

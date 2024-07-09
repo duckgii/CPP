@@ -19,6 +19,7 @@ class	PhoneBook
 		void	AddContact();
 		void	DisplayContact();
 		void	SearchIndex();
+		void	ClearCin();
 };
 
 #endif

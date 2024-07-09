@@ -46,11 +46,7 @@ void	PhoneBook::SearchIndex()
 	{
 		std::cout << "Input index : ";
 		std::getline(std::cin, input);
-		if (std::cin.eof())
-		{
-			std::cin.clear();
-			clearerr(stdin);
-		}
+		PhoneBook::ClearCin();
 		if (input == "")
 		{
 			std::cout<<std::endl;
@@ -61,8 +57,15 @@ void	PhoneBook::SearchIndex()
 			break;
 		else
 			std::cout << "Wrong index!!"<<std::endl;
+	}
+	contact[s_idx - 1].DisplayAllInfo();
+}
+
+void	PhoneBook::ClearCin()
+{
+	if (std::cin.eof())
+	{
 		std::cin.clear();
 		clearerr(stdin);
 	}
-	contact[s_idx - 1].DisplayAllInfo();
 }
