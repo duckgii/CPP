@@ -13,10 +13,12 @@ class	Contact
 		std::string phone_number;
 		std::string darkest_secret;
 	public:
-		void	InitContact();
-		void	DisplayContact(int i);
-		void	DisplayAllInfo();
-		//void	DeleteContact(int idx);
+		void			InitContact();
+		void			DisplayContact(int i);
+		void			DisplayAllInfo();
+		int				IsNum(std::string str);
+		std::string		GetString(std::string str);
+		int				IsPrintable(std::string str);
 };
 
 #endif

@@ -4,17 +4,66 @@
 
 void	Contact::InitContact()
 {
-	std::cout<<"Input first name : ";
-	std::cin>>first_name;
-	std::cout<<"Input last name : ";
-	std::cin>>last_name;
-	std::cout<<"Input nickname : ";
-	std::cin>>nick_name;
-	std::cout<<"Input phone number : ";
-	std::cin>>phone_number;
-	std::cout<<"Input darkest secret : ";
-	std::cin>>darkest_secret;
+	first_name = GetString("Input first name : ");
+	last_name = GetString("Input last name : ");
+	nick_name = GetString("Input nickname : ");
+	phone_number = GetString("Input phone number : ");
+	while (Contact::IsNum(phone_number) == 0)
+	{
+		std::cout<<"Phone Number should consist of Number"<<std::endl;
+		phone_number = GetString("Input phone number : ");
+	}
+	darkest_secret = GetString("Input darkest secret : ");
+}
 
+std::string Contact::GetString(std::string str)
+{
+	std::string	ret;
+
+	std::cout<<str;
+	std::getline(std::cin, ret);
+	if (std::cin.eof())
+	{
+		std::cin.clear();
+		clearerr(stdin);
+	}
+	while (IsPrintable(ret) == 0 || ret == "")
+	{
+		if (IsPrintable(ret) == 1 && ret == "")
+			std::cout<<std::endl;
+		std::cout<<str;
+		std::getline(std::cin, ret);
+		if (std::cin.eof())
+		{
+			std::cin.clear();
+			clearerr(stdin);
+		}
+	}
+	if (std::cin.eof())
+	{
+		std::cin.clear();
+		clearerr(stdin);
+	}
+	return (ret);
+}
+
+int	Contact::IsPrintable(std::string str)
+{
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		if (std::isprint(str[i]) == 0)
+			return (0);}
+	return (1);
+}
+
+int	Contact::IsNum(std::string str)
+{
+	for (int i=0; str[i] != '\0'; i++)
+	{
+		if (std::isdigit(str[i]) == 0)
+			return (0);
+	}
+	return (1);
 }
 
 void	Contact::DisplayAllInfo()
@@ -30,19 +79,22 @@ void	Contact::DisplayContact(int i)
 {
 	std::string	str_temp;
 
-	std::cout<<"|"<<std::setw(10)<<i;
+	std::cout<<"|"<<std::setw(10)<<i + 1;
+	str_temp = first_name;
 	if (first_name.length() > 10)
 	{
 		str_temp = first_name.substr(0, 10);
 		str_temp[9] = '.';
 	}
 	std::cout<<"|"<<std::setw(10)<<str_temp;
+	str_temp = last_name;
 	if (last_name.length() > 10)
 	{
 		str_temp = last_name.substr(0, 10);
 		str_temp[9] = '.';
 	}
 	std::cout<<"|"<<std::setw(10)<<str_temp;
+	str_temp = nick_name;
 	if (nick_name.length() > 10)
 	{
 		str_temp = nick_name.substr(0, 10);

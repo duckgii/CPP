@@ -12,13 +12,13 @@ class	PhoneBook
 	private:
 		Contact contact[8];
 		int		idx;
+		int		booklen;
+		int		checkfirst;
 	public:
 		PhoneBook();
-		//~PhoneBook();
 		void	AddContact();
 		void	DisplayContact();
 		void	SearchIndex();
-		//void	Exit();
 };
 
 #endif
