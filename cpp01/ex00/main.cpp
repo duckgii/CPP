@@ -1,9 +1,6 @@
 #include "Zombie.hpp"
 #include <sstream>
 
-Zombie* newZombie(std::string name);
-void	randomChump(std::string name);
-
 int main()
 {
 	Zombie	*crr;
