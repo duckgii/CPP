@@ -22,23 +22,28 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
-	void		(Harl::*FcPointer[4])(void);
 	std::string	name[4];
 
-	FcPointer[0] = &Harl::debug;
-	FcPointer[1] = &Harl::info;
-	FcPointer[2] = &Harl::warning;
-	FcPointer[3] = &Harl::error;
 	name[0] = "debug";
 	name[1] = "info";
 	name[2] = "warning";
 	name[3] = "error";
-
 	for (int i=0; i < 4; i++)
 	{
 		if (name[i] == level)
 		{
-			(this->*FcPointer[i])();
+			switch (i)
+			{
+			case 0 :
+				Harl::debug();
+			case 1 :
+				Harl::info();
+			case 2 :
+				Harl::warning();
+			case 3 :
+				Harl::error();
+				break;
+			}
 			return ;
 		}
 	}
