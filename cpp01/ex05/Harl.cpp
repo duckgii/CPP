@@ -1,23 +1,23 @@
 #include "Harl.hpp"
 
-void	Harl::debug(void)
+void	Harl::DEBUG(void)
 {
-	std::cout<<"It's debug Level!!"<<std::endl;
+	std::cout<<"It's DEBUG Level!!"<<std::endl;
 }
 
-void	Harl::info(void)
+void	Harl::INFO(void)
 {
-	std::cout<<"It's info Level!!"<<std::endl;
+	std::cout<<"It's INFO Level!!"<<std::endl;
 }
 
-void	Harl::warning(void)
+void	Harl::WARNING(void)
 {
-	std::cout<<"It's warning Level!!"<<std::endl;
+	std::cout<<"It's WARNING Level!!"<<std::endl;
 }
 
-void	Harl::error(void)
+void	Harl::ERROR(void)
 {
-	std::cout<<"It's error Level!!"<<std::endl;
+	std::cout<<"It's ERROR Level!!"<<std::endl;
 }
 
 void	Harl::complain(std::string level)
@@ -25,14 +25,14 @@ void	Harl::complain(std::string level)
 	void		(Harl::*FcPointer[4])(void);
 	std::string	name[4];
 
-	FcPointer[0] = &Harl::debug;
-	FcPointer[1] = &Harl::info;
-	FcPointer[2] = &Harl::warning;
-	FcPointer[3] = &Harl::error;
-	name[0] = "debug";
-	name[1] = "info";
-	name[2] = "warning";
-	name[3] = "error";
+	FcPointer[0] = &Harl::DEBUG;
+	FcPointer[1] = &Harl::INFO;
+	FcPointer[2] = &Harl::WARNING;
+	FcPointer[3] = &Harl::ERROR;
+	name[0] = "DEBUG";
+	name[1] = "INFO";
+	name[2] = "WARNING";
+	name[3] = "ERROR";
 
 	for (int i=0; i < 4; i++)
 	{

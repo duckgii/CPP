@@ -11,6 +11,7 @@ class Zombie
 		std::string	name;
 	public:
 		Zombie();
+		~Zombie();
 		Zombie(std::string input);
 		void	announce(void);
 };

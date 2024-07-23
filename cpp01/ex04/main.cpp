@@ -26,23 +26,33 @@ int	main(int ac, char *av[])
 		std::cout<<"input is wrong!!"<<std::endl;
 		return (1);
 	}
-	readFile.open(filename);
+	readFile.open(filename.c_str());
 	line = filename + ".replace";
-	outfile.open(line);
 	if (readFile.is_open())
 	{
+		outfile.open(line.c_str());
 		while (!readFile.eof())
 		{
 			getline(readFile, line);
 			line = replace_line(line, find, replace);
 			outfile << line;
 			if (!readFile.eof())
-				outfile << std::endl;
+			{
+				if (find == "\n")
+				{
+					outfile << replace;
+				}
+				else
+					outfile << std::endl;
+			}
 		}
+		outfile.close();
 	}
 	else
+	{
 		std::cout<<"File open error"<<std::endl;
-	outfile.close();
+		return (1);
+	}
 	readFile.close();
 	return (0);
 }
@@ -50,17 +60,14 @@ int	main(int ac, char *av[])
 std::string	replace_line(std::string line, std::string find, std::string replace)
 {
 	std::string	temp;
-	int			f_len = find.length();
+	int			start = 0;
+	int			idx = 0;
 
-	for (int i = 0; (i + f_len) < (int)line.length(); i++)
+	while (line.find(find, start) != std::string::npos)
 	{
-		temp = line.substr(i, f_len);
-		if (temp == find)
-		{
-			line = line.substr(0, i) + replace + line.substr(i + f_len);
-			i += replace.length() - 1;
-		}
-
+		idx = line.find(find, start);
+		line = line.substr(0, idx) + replace + line.substr(idx + find.length());
+		start += idx + find.length();
 	}
 	return (line);
 }

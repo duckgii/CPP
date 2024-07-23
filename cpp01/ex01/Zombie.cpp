@@ -13,3 +13,8 @@ Zombie::Zombie(std::string input)
 Zombie::Zombie()
 {
 }
+
+Zombie::~Zombie()
+{
+	std:cout<<name<<": Destructor is called"<<std::endl;
+}

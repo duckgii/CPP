@@ -1,33 +1,33 @@
 #include "Harl.hpp"
 
-void	Harl::debug(void)
+void	Harl::DEBUG(void)
 {
-	std::cout<<"It's debug Level!!"<<std::endl;
+	std::cout<<"It's DEBUG Level!!"<<std::endl;
 }
 
-void	Harl::info(void)
+void	Harl::INFO(void)
 {
-	std::cout<<"It's info Level!!"<<std::endl;
+	std::cout<<"It's INFO Level!!"<<std::endl;
 }
 
-void	Harl::warning(void)
+void	Harl::WARNING(void)
 {
-	std::cout<<"It's warning Level!!"<<std::endl;
+	std::cout<<"It's WARNING Level!!"<<std::endl;
 }
 
-void	Harl::error(void)
+void	Harl::ERROR(void)
 {
-	std::cout<<"It's error Level!!"<<std::endl;
+	std::cout<<"It's ERROR Level!!"<<std::endl;
 }
 
 void	Harl::complain(std::string level)
 {
 	std::string	name[4];
 
-	name[0] = "debug";
-	name[1] = "info";
-	name[2] = "warning";
-	name[3] = "error";
+	name[0] = "DEBUG";
+	name[1] = "INFO";
+	name[2] = "WARNING";
+	name[3] = "ERROR";
 	for (int i=0; i < 4; i++)
 	{
 		if (name[i] == level)
@@ -35,13 +35,16 @@ void	Harl::complain(std::string level)
 			switch (i)
 			{
 			case 0 :
-				Harl::debug();
+				Harl::DEBUG();
+				//FALLTHROUGH
 			case 1 :
-				Harl::info();
+				Harl::INFO();
+				//FALLTHROUGH
 			case 2 :
-				Harl::warning();
+				Harl::WARNING();
+				//FALLTHROUGH
 			case 3 :
-				Harl::error();
+				Harl::ERROR();
 				break;
 			}
 			return ;

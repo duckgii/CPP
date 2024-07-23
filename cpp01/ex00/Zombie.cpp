@@ -9,3 +9,8 @@ Zombie::Zombie(std::string input)
 {
 	name = input;
 }
+
+Zombie::~Zombie()
+{
+	std:cout<<name<<": Destructor is called"<<std::endl;
+}
