@@ -3,7 +3,7 @@
 HumanB::HumanB(std::string input)
 {
 	name = input;
-	myweapon = NULL:
+	myWeapon = NULL;
 }
 void	HumanB::setWeapon(Weapon &weapon)
 {
@@ -11,7 +11,7 @@ void	HumanB::setWeapon(Weapon &weapon)
 }
 void	HumanB::attack(void)
 {
-	if (myweapon == NULL)
+	if (myWeapon == NULL)
 	{
 		std::cout<<name<<" empty weapon"<<std::endl;
 		return ;
