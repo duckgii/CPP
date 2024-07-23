@@ -13,7 +13,7 @@ int	main(int ac, char *av[])
 	std::string		line;
 	std::ofstream		outfile;
 
-	if (ac != 4)
+	if (ac != 4 || av[2] == std::string("") || av[3] == std::string(""))
 	{
 		std::cout<<"input is wrong!!"<<std::endl;
 		return (1);
@@ -66,8 +66,11 @@ std::string	replace_line(std::string line, std::string find, std::string replace
 	while (line.find(find, start) != std::string::npos)
 	{
 		idx = line.find(find, start);
-		line = line.substr(0, idx) + replace + line.substr(idx + find.length());
-		start += idx + find.length();
+		if (idx == 0)
+			line = replace + line.substr(idx + find.length());
+		else
+			line = line.substr(0, idx) + replace + line.substr(idx + find.length());
+		start += idx + replace.length();
 	}
 	return (line);
 }
