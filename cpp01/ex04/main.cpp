@@ -11,7 +11,7 @@ int	main(int ac, char *av[])
 	std::string		find;
 	std::string		replace;
 	std::string		line;
-	std::ofstream		outfile;
+	std::ofstream	outfile;
 
 	if (ac != 4 || av[2] == std::string("") || av[3] == std::string(""))
 	{
@@ -39,9 +39,7 @@ int	main(int ac, char *av[])
 			if (!readFile.eof())
 			{
 				if (find == "\n")
-				{
 					outfile << replace;
-				}
 				else
 					outfile << std::endl;
 			}
