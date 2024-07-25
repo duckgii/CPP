@@ -49,6 +49,7 @@ std::ostream&	operator<<(std::ostream &out, const Fixed &in)
 
 int	Fixed::getRawBits(void) const
 {
+	//std::cout<<"getRawBits member function called"<<std::endl;
 	return (number);
 }
 
