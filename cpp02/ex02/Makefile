@@ -1,6 +1,6 @@
 CC = c++
 NAME = a.out
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -Wall -Wextra -Werror #-fsanitize=address -g3
 SRCS = main.cpp \
 		Fixed.cpp
 SRCS_OBJS = main.o \
