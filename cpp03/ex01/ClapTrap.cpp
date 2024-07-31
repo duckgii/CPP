@@ -3,9 +3,9 @@
 ClapTrap::ClapTrap(std::string initname)
 {
 	name = initname;
-	hitpoint = 10;
-	EnergyPoint = 10;
-	AttackDamage = 0;
+	hitPoint = 10;
+	energyPoint = 10;
+	attackDamage = 0;
 	std::cout<<"ClapTrap Default constructor called"<<std::endl;
 }
 
@@ -18,9 +18,9 @@ ClapTrap::ClapTrap(ClapTrap &copy)
 {
 	std::cout<<"ClapTrap Copy constructor called"<<std::endl;
 	name = copy.getName();
-	hitpoint = copy.getHitPoint();
-	EnergyPoint = copy.getEnergyPoint();
-	AttackDamage = copy.getAttackDamage();
+	hitPoint = copy.gethitPoint();
+	energyPoint = copy.getenergyPoint();
+	attackDamage = copy.getattackDamage();
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &in)
@@ -32,45 +32,45 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &in)
 	}
 	std::cout<<"ClapTrap Copy assignment operator called"<<std::endl;
 	name = in.getName();
-	hitpoint = in.getHitPoint();
-	EnergyPoint = in.getEnergyPoint();
-	AttackDamage = in.getAttackDamage();
+	hitPoint = in.gethitPoint();
+	energyPoint = in.getenergyPoint();
+	attackDamage = in.getattackDamage();
 	return (*this);
 }
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (hitpoint == 0)
+	if (hitPoint == 0)
 	{
 		std::cout<<name<<" has no hitpoint"<<std::endl;
 		return ;
 	}
-	if (EnergyPoint == 0)
+	if (energyPoint == 0)
 	{
 		std::cout<<name<<" has no EnergyPoint"<<std::endl;
 		return ;
 	}
-	EnergyPoint--;
-	std::cout<<"ClapTrap "<<name<<" attacks "<<target<<", causing "<<AttackDamage<<" points of damage!"<<std::endl;
+	energyPoint--;
+	std::cout<<"ClapTrap "<<name<<" attacks "<<target<<", causing "<<attackDamage<<" points of damage!"<<std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (hitpoint == 0)
+	if (hitPoint == 0)
 	{
 		std::cout<<name<<" has no hitpoint"<<std::endl;
 		return ;
 	}
-	if (EnergyPoint == 0)
+	if (energyPoint == 0)
 	{
 		std::cout<<name<<" has no EnergyPoint"<<std::endl;
 		return ;
 	}
-	if ((unsigned int)hitpoint < amount)
+	if ((unsigned int)hitPoint < amount)
 	{
 		std::cout<<name<<" hitpoint is less then amount."<<std::endl;
-		std::cout<<"ClapTrap "<<name<<" takes "<<hitpoint<<" points of damage."<<std::endl;
-		hitpoint = 0;
+		std::cout<<"ClapTrap "<<name<<" takes "<<hitPoint<<" points of damage."<<std::endl;
+		hitPoint = 0;
 	}
 	else
 		std::cout<<"ClapTrap "<<name<<" takes "<<amount<<" points of damage."<<std::endl;
@@ -78,21 +78,25 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (hitpoint == 0)
+	if (hitPoint == 0)
 	{
 		std::cout<<name<<" has no hitpoint"<<std::endl;
 		return ;
 	}
-	if (EnergyPoint == 0)
+	if (energyPoint == 0)
 	{
 		std::cout<<name<<" has no EnergyPoint"<<std::endl;
 		return ;
 	}
-	EnergyPoint--;
+	energyPoint--;
 	std::cout<<"ClapTrap "<<name<<" repairs "<<amount<<" points of hit points."<<std::endl;
 }
 
-int	ClapTrap::getHitPoint() const { return hitpoint; }
-int	ClapTrap::getEnergyPoint() const { return EnergyPoint; }
-int	ClapTrap::getAttackDamage() const { return AttackDamage; }
+int	ClapTrap::gethitPoint() const { return hitPoint; }
+int	ClapTrap::getenergyPoint() const { return energyPoint; }
+int	ClapTrap::getattackDamage() const { return attackDamage; }
 std::string	ClapTrap::getName() const { return name; }
+
+void	ClapTrap::sethitPoint(int point) { hitPoint = point; }
+void	ClapTrap::setenergyPoint(int point) { hitPoint = point; }
+void	ClapTrap::setattackDamage(int point) { hitPoint = point; }
