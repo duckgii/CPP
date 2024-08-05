@@ -73,7 +73,10 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		hitpoint = 0;
 	}
 	else
+	{
 		std::cout<<"ClapTrap "<<name<<" takes "<<amount<<" points of damage."<<std::endl;
+		hitpoint -= amount;
+	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -90,6 +93,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	EnergyPoint--;
 	std::cout<<"ClapTrap "<<name<<" repairs "<<amount<<" points of hit points."<<std::endl;
+	hitpoint += amount;
 }
 
 int	ClapTrap::getHitPoint() const { return hitpoint; }

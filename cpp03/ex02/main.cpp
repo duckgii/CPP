@@ -1,10 +1,10 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main()
 {
-	ScavTrap	man1("sungyoon");
-	ScavTrap	man2("yeoshin");
-	ScavTrap	man3(man1);
+	FragTrap	man1("sungyoon");
+	FragTrap	man2("yeoshin");
+	FragTrap	man3(man1);
 	man3 = man2;
 
 	man1.attack("yeoshin");
@@ -22,5 +22,5 @@ int	main()
 	man2.takeDamage(22);
 	man1.attack("yeoshin");
 	man2.takeDamage(22);
-	man1.guardGate();
+	man1.highFivesGuys();
 }
