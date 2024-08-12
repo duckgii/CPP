@@ -99,6 +99,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	energyPoint--;
 	std::cout<<"ClapTrap "<<name<<" repairs "<<amount<<" points of hit points."<<std::endl;
 	hitPoint += amount;
+	std::cout<<"So ClapTrap "<<name<<" has  "<<hitPoint<<" points of hit points."<<std::endl;
 }
 
 int	ClapTrap::gethitPoint() const { return hitPoint; }

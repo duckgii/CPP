@@ -18,10 +18,6 @@ ScavTrap::~ScavTrap()
 ScavTrap::ScavTrap(ScavTrap &copy) : ClapTrap(copy)
 {
 	std::cout<<"ScavTrap Copy constructor called"<<std::endl;
-	//setname(copy.getName());
-	//sethitPoint(copy.gethitPoint());
-	//setenergyPoint(copy.getenergyPoint());
-	//setattackDamage(copy.getattackDamage());
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &in)
@@ -39,7 +35,23 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &in)
 	return (*this);
 }
 
+void	ScavTrap::attack(const std::string& target)
+{
+	if (hitPoint == 0)
+	{
+		std::cout<<name<<" has no hitpoint"<<std::endl;
+		return ;
+	}
+	if (energyPoint == 0)
+	{
+		std::cout<<name<<" has no EnergyPoint"<<std::endl;
+		return ;
+	}
+	energyPoint--;
+	std::cout<<"ScavTrap "<<name<<" attacks "<<target<<", causing "<<attackDamage<<" points of damage!"<<std::endl;
+}
+
 void	ScavTrap::guardGate()
 {
-	std::cout<<"ClapTrap "<<this->getName()<<" is  now in Gate keeper mode."<<std::endl;
+	std::cout<<"ClapTrap "<<this->getName()<<" is now in Gate keeper mode."<<std::endl;
 }

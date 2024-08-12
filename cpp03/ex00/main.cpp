@@ -29,9 +29,5 @@ int	main()
 	man1.attack("yeoshin");
 	man2.takeDamage(0);
 	man1.attack("yeoshin");
-	man2.takeDamage(0);
-	man1.attack("yeoshin");
-	man2.takeDamage(0);
-	man1.attack("yeoshin");
-	man2.takeDamage(0);
+	return (0);
 }

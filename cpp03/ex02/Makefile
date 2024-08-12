@@ -1,10 +1,12 @@
 CC = c++
 NAME = a.out
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
+
 SRCS = main.cpp \
 		ClapTrap.cpp \
 		ScavTrap.cpp \
 		FragTrap.cpp
+
 SRCS_OBJS = main.o \
 			ClapTrap.o \
 			ScavTrap.o \
