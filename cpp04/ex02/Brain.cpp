@@ -25,6 +25,6 @@ Brain& Brain::operator=(const Brain &in)
 		return (*this);
 	}
 	std::cout<<"Brain Copy assignment operator is called"<<std::endl;
-	this->ideas = in.ideas;
+	*(this->ideas) = *(in.ideas);
 	return (*this);
 }
