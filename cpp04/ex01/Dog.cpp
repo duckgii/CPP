@@ -16,8 +16,9 @@ Dog::~Dog()
 Dog::Dog(const Dog &copy)
 {
 	std::cout<<"Dog Copy constructor is called"<<std::endl;
+	brain = new Brain();
 	type = copy.type;
-	brain = copy.brain;
+	*brain = *(copy.brain);
 }
 
 Dog& Dog::operator=(const Dog &in)

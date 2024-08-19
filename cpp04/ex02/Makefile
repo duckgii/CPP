@@ -2,17 +2,19 @@ CC = c++
 NAME = a.out
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 SRCS = main.cpp \
-		Animal.cpp \
+		AAnimal.cpp \
 		Cat.cpp \
 		Dog.cpp \
 		WrongAnimal.cpp \
-		WrongCat.cpp
+		WrongCat.cpp \
+		Brain.cpp
 SRCS_OBJS = main.o \
-			Animal.o \
+			AAnimal.o \
 			Cat.o \
 			Dog.o \
 			WrongAnimal.o \
-			WrongCat.o
+			WrongCat.o \
+			Brain.o
 
 all : $(NAME)
 

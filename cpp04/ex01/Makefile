@@ -6,13 +6,15 @@ SRCS = main.cpp \
 		Cat.cpp \
 		Dog.cpp \
 		WrongAnimal.cpp \
-		WrongCat.cpp
+		WrongCat.cpp \
+		Brain.cpp
 SRCS_OBJS = main.o \
 			Animal.o \
 			Cat.o \
 			Dog.o \
 			WrongAnimal.o \
-			WrongCat.o
+			WrongCat.o \
+			Brain.o
 
 all : $(NAME)
 

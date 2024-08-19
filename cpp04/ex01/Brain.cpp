@@ -2,18 +2,20 @@
 
 Brain::Brain()
 {
-	ideas = new std::string[100];
 	std::cout<<"Brain Default construtror is called"<<std::endl;
 }
 
 Brain::~Brain()
 {
-	delete []ideas;
 	std::cout<<"Brain Default destructor is called"<<std::endl;
 }
 
 Brain::Brain(const Brain &copy)
 {
+	for (int i = 0; i < 100; i++)
+	{
+		ideas[i] = copy.ideas[i];
+	}
 	std::cout<<"Brain Copy constructor is called"<<std::endl;
 }
 
@@ -25,6 +27,9 @@ Brain& Brain::operator=(const Brain &in)
 		return (*this);
 	}
 	std::cout<<"Brain Copy assignment operator is called"<<std::endl;
-	this->ideas = in.ideas;
+	for (int i = 0; i < 100; i++)
+	{
+		this->ideas[i] = in.ideas[i];
+	}
 	return (*this);
 }

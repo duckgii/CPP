@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
 	std::cout<<"Cat Default construtror is called"<<std::endl;
 	type = "Cat";
@@ -16,8 +16,9 @@ Cat::~Cat()
 Cat::Cat(const Cat &copy)
 {
 	std::cout<<"Cat Copy constructor is called"<<std::endl;
+	brain = new Brain();
 	type = copy.type;
-	brain = copy.brain;
+	*brain = *(copy.brain);
 }
 
 Cat& Cat::operator=(const Cat &in)
