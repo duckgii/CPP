@@ -1,20 +1,18 @@
 CC = c++
 NAME = a.out
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3
 SRCS = main.cpp \
-		AAnimal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
-		Brain.cpp
+		AMateria.cpp \
+		Character.cpp \
+		Cure.cpp \
+		Ice.cpp \
+		MateriaSource.cpp
 SRCS_OBJS = main.o \
-			AAnimal.o \
-			Cat.o \
-			Dog.o \
-			WrongAnimal.o \
-			WrongCat.o \
-			Brain.o
+			AMateria.o \
+			Character.o \
+			Cure.o \
+			Ice.o \
+			MateriaSource.o
 
 all : $(NAME)
 

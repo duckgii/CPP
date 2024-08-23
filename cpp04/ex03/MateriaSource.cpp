@@ -6,12 +6,17 @@ MateriaSource::MateriaSource()
 	{
 		_inventory[i] = NULL;
 	}
-	std::cout<<"MateriaSource default constructor is called"<<std::endl;
+	//std::cout<<"MateriaSource default constructor is called"<<std::endl;
 }
 
 MateriaSource::~MateriaSource()
 {
-	std::cout<<"MateriaSource default destructor is called"<<std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i] != NULL)
+			delete _inventory[i];
+	}
+	//std::cout<<"MateriaSource default destructor is called"<<std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &copy)
@@ -20,7 +25,7 @@ MateriaSource::MateriaSource(const MateriaSource &copy)
 	{
 		this->_inventory[i] = copy._inventory[i];
 	}
-	std::cout<<"MateriaSource Copy constructor is called"<<std::endl;
+	//std::cout<<"MateriaSource Copy constructor is called"<<std::endl;
 }
 
 MateriaSource&	MateriaSource::operator=(const MateriaSource &in)
@@ -34,16 +39,31 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource &in)
 	{
 		this->_inventory[i] = in._inventory[i];
 	}
-	std::cout<<"MateriaSource Copy assignment operator is called"<<std::endl;
+	//std::cout<<"MateriaSource Copy assignment operator is called"<<std::endl;
 	return (*this);
 }
 
-void learnMateria(AMateria* in)
+void MateriaSource::learnMateria(AMateria* in)
 {
-	AMateria *temp;
-	temp->set_type(in->getType());
-
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i] == NULL)
+		{
+			_inventory[i] = in;
+			break;
+		}
+	}
 }
 
-AMateria* createMateria(std::string const & type)
-{}
+AMateria* MateriaSource::createMateria(std::string const & type)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i] != NULL)
+		{
+			if (_inventory[i]->getType() == type)
+				return (_inventory[i]->clone());
+		}
+	}
+	return (0);
+}
