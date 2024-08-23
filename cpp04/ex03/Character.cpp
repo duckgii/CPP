@@ -64,13 +64,13 @@ void Character::equip(AMateria* m)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_inventory[i] == m)
-			return;
-		else if (this->_inventory[i] == NULL)
+		if (this->_inventory[i] == NULL)
 		{
 			this->_inventory[i] = m->clone();
 			return;
 		}
+		if (this->_inventory[i]->getType() == m->getType())
+			return;
 	}
 	return ;
 }

@@ -2,7 +2,7 @@
 
 Ice::Ice()
 {
-	_type = "none";
+	_type = "ice";
 	//std::cout<<"Ice default constructor is called"<<std::endl;
 }
 
@@ -36,7 +36,7 @@ Ice&	Ice::operator=(const Ice &in)
 
 void Ice::use(ICharacter& target)
 {
-	std::cout<<"* shoots an ice bolt at "<<target.getName()<<std::endl;
+	std::cout<<"* shoots an ice bolt at "<<target.getName()<<" *"<<std::endl;
 }
 
 AMateria *Ice::clone() const

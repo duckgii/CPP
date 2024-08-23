@@ -2,7 +2,7 @@
 
 Cure::Cure()
 {
-	_type = "none";
+	_type = "cure";
 	//std::cout<<"Cure default constructor is called"<<std::endl;
 }
 
