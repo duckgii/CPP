@@ -4,11 +4,6 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
-void	check(void)
-{
-	system("leaks a.out");
-}
-
 int main()
 {
 	IMateriaSource* src = new MateriaSource();
@@ -23,7 +18,6 @@ int main()
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
-	atexit(check);
 
 	delete bob;
 	delete me;

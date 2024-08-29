@@ -13,11 +13,10 @@ Cat::~Cat()
 	std::cout<<"Cat Default destructor is called"<<std::endl;
 }
 
-Cat::Cat(const Cat &copy)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	std::cout<<"Cat Copy constructor is called"<<std::endl;
 	brain = new Brain();
-	type = copy.type;
 	*brain = *(copy.brain);
 }
 
