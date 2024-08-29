@@ -13,11 +13,10 @@ Dog::~Dog()
 	std::cout<<"Dog Default destructor is called"<<std::endl;
 }
 
-Dog::Dog(const Dog &copy)
+Dog::Dog(const Dog &copy) : AAnimal(copy)
 {
 	std::cout<<"Dog Copy constructor is called"<<std::endl;
 	brain = new Brain();
-	type = copy.type;
 	*brain = *(copy.brain);
 }
 

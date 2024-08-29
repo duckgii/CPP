@@ -10,10 +10,9 @@ WrongCat::~WrongCat()
 	std::cout<<"WrongCat Default destructor is called"<<std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &copy)
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
 {
 	std::cout<<"WrongCat Copy constructor is called"<<std::endl;
-	type = copy.type;
 }
 
 WrongCat& WrongCat::operator=(const WrongCat &in)
