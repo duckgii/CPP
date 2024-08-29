@@ -4,10 +4,14 @@
 #include "AAnimal.hpp"
 #include "WrongAnimal.hpp"
 
+//void	check(void)
+//{
+//	system("leaks a.out");
+//}
+
 int main()
 {
-	//AAnimal	animal1;
-	//AAnimal	animal2(animal1);
+	//atexit(check);
 	Dog		dog1;
 	Dog		dog2(dog1);
 	Cat		cat1;
@@ -18,8 +22,6 @@ int main()
 	WrongCat	wrongCat2(wrongCat1);
 
 	std::cout<<"\n\n";
-	//std::cout<<animal1.getType()<<" "<<std::endl;
-	//animal1.makeSound();
 	std::cout<<dog1.getType()<<" "<<std::endl;
 	dog1.makeSound();
 	std::cout<<cat1.getType()<<" "<<std::endl;

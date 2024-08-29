@@ -67,6 +67,7 @@ void Character::equip(AMateria* m)
 		if (this->_inventory[i] == NULL)
 		{
 			this->_inventory[i] = m->clone();
+			delete m;
 			return;
 		}
 		if (this->_inventory[i]->getType() == m->getType())
