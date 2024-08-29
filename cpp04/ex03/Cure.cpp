@@ -1,6 +1,6 @@
 #include "Cure.hpp"
 
-Cure::Cure()
+Cure::Cure() : AMateria()
 {
 	_type = "cure";
 	//std::cout<<"Cure default constructor is called"<<std::endl;
@@ -11,15 +11,13 @@ Cure::~Cure()
 	//std::cout<<"Cure default destructor is called"<<std::endl;
 }
 
-Cure::Cure(const Cure &copy)
+Cure::Cure(const Cure &copy) : AMateria(copy)
 {
 	//std::cout<<"Cure Copy constructor is called"<<std::endl;
-	_type = copy._type;
 }
 
-Cure::Cure(const std::string & type)
+Cure::Cure(const std::string & type) : AMateria(type)
 {
-	_type = type;
 }
 
 Cure&	Cure::operator=(const Cure &in)

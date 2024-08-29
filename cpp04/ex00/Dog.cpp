@@ -11,7 +11,7 @@ Dog::~Dog()
 	std::cout<<"Dog Default destructor is called"<<std::endl;
 }
 
-Dog::Dog(const Dog &copy) : Dog(copy)
+Dog::Dog(const Dog &copy) : Animal(copy)
 {
 	std::cout<<"Dog Copy constructor is called"<<std::endl;
 }
