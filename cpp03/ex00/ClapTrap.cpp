@@ -14,7 +14,7 @@ ClapTrap::~ClapTrap()
 	std::cout<<"ClapTrap Destructor called"<<std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap &copy)
+ClapTrap::ClapTrap(const ClapTrap &copy)
 {
 	std::cout<<"ClapTrap Copy constructor called"<<std::endl;
 	name = copy.getName();

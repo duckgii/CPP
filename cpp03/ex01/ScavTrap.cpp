@@ -1,13 +1,15 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap() {}
+ScavTrap::ScavTrap() : ClapTrap()
+{
+std::cout<<"ScavTrap Default constructor called"<<std::endl;
+}
 
 ScavTrap::ScavTrap(std::string initname) : ClapTrap(initname)
 {
 	this->sethitPoint(100);
 	this->setenergyPoint(50);
 	this->setattackDamage(20);
-	std::cout<<"ScavTrap Default constructor called"<<std::endl;
 }
 
 ScavTrap::~ScavTrap()
@@ -15,7 +17,7 @@ ScavTrap::~ScavTrap()
 	std::cout<<"ScavTrap Destructor called"<<std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap &copy) //: ClapTrap(copy)
+ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(copy)
 {
 	std::cout<<"ScavTrap Copy constructor called"<<std::endl;
 }

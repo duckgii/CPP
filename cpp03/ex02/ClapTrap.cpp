@@ -5,13 +5,12 @@ ClapTrap::ClapTrap()
 	std::cout<<"ClapTrap Default constructor called"<<std::endl;
 }
 
-ClapTrap::ClapTrap(std::string initname)
+ClapTrap::ClapTrap(std::string initname) : ClapTrap()
 {
 	name = initname;
 	hitPoint = 10;
 	energyPoint = 10;
 	attackDamage = 0;
-	std::cout<<"ClapTrap Default constructor called"<<std::endl;
 }
 
 ClapTrap::~ClapTrap()
@@ -19,7 +18,7 @@ ClapTrap::~ClapTrap()
 	std::cout<<"ClapTrap Destructor called"<<std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap &copy)
+ClapTrap::ClapTrap(const ClapTrap &copy)
 {
 	std::cout<<"ClapTrap Copy constructor called"<<std::endl;
 	name = copy.getName();

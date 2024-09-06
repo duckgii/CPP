@@ -14,7 +14,7 @@ class	ClapTrap
 	public:
 		ClapTrap(std::string initname);
 		~ClapTrap();
-		ClapTrap(ClapTrap &copy);
+		ClapTrap(const ClapTrap &copy);
 		ClapTrap& operator=(const ClapTrap &in);
 
 		int		getHitPoint() const;

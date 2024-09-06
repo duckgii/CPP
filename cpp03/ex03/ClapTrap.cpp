@@ -7,7 +7,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string initname) : ClapTrap()
 {
-	name = initname;
+	name = initname + "_clap_name";
 	hitPoint = 10;
 	energyPoint = 10;
 	attackDamage = 0;
@@ -99,7 +99,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	std::cout<<"ClapTrap "<<name<<" repairs "<<amount<<" points of hit points."<<std::endl;
 	hitPoint += amount;
 	std::cout<<"So ClapTrap "<<name<<" has  "<<hitPoint<<" points of hit points."<<std::endl;
-
 }
 
 int	ClapTrap::gethitPoint() const { return hitPoint; }
