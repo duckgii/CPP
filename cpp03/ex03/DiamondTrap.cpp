@@ -10,7 +10,10 @@ DiamondTrap::DiamondTrap() : ClapTrap(), name("")
 
 DiamondTrap::DiamondTrap(std::string initname) : ClapTrap(initname), name("")
 {
-    name = initname;
+	this->hitPoint = FragTrap::gethitPoint();
+	this->energyPoint = ScavTrap::getenergyPoint();
+	this->attackDamage = FragTrap::getattackDamage();
+    //name = initname;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), name("")
@@ -37,7 +40,7 @@ DiamondTrap&	DiamondTrap::operator=(const DiamondTrap &in)
 	return (*this);
 }
 
-// void	DiamondTrap::attack(const std::string& target) : ClapTrap::attack(target)
+// void	DiamondTrap::attack(const std::string& target) : ScavTrap::attack(target)
 // {} //에러나는데 왜?
 
 void	DiamondTrap::whoAmI()

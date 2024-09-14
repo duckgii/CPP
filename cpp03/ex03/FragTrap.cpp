@@ -2,6 +2,9 @@
 
 FragTrap::FragTrap() : ClapTrap() 
 {
+	this->sethitPoint(100);
+	this->setenergyPoint(100);
+	this->setattackDamage(30);
 	std::cout<<"FragTrap Default constructor called"<<std::endl;
 }
 

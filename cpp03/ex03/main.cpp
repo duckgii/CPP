@@ -83,7 +83,6 @@ int	main()
 	// man21.highFivesGuys();
 
 	std::cout<<"\n\n\nDiamondTrap"<<std::endl;
-	
 	man31.attack("yeo");
 	man32.takeDamage(30);
 	man32.beRepaired(5);
@@ -99,5 +98,6 @@ int	main()
 	man32.takeDamage(30);
 	man31.attack("yeo");
 	man32.takeDamage(30);
-	man31.highFivesGuys();
+	man31.whoAmI();
+	std::cout<<std::endl<<std::endl;
 }

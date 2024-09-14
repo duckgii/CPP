@@ -2,10 +2,13 @@
 
 ClapTrap::ClapTrap()
 {
+	hitPoint = 10;
+	energyPoint = 10;
+	attackDamage = 0;
 	std::cout<<"ClapTrap Default constructor called"<<std::endl;
 }
 
-ClapTrap::ClapTrap(std::string initname) : ClapTrap()
+ClapTrap::ClapTrap(std::string initname)
 {
 	name = initname + "_clap_name";
 	hitPoint = 10;
