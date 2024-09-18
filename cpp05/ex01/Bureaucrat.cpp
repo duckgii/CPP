@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : name("none")
 {
@@ -105,4 +106,16 @@ void	Bureaucrat::DecrementGrade()
 		else
 			this->GradeTooHighException();
 	}
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	bool flag;
+
+	flag = form.beSigned(*this);
+	if (flag == true)
+		std::cout<<this->getName()<<" signed "<<form.getName()<<std::endl;
+	else
+		std::cout<<this->getName()<<" couldn’t sign  "<<form.getName()<<" because bureaucrat's grade is too low"<<std::endl;
+
 }

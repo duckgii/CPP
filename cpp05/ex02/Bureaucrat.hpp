@@ -4,6 +4,8 @@
 # include <string>
 # include <iostream>
 
+class AForm;
+
 class Bureaucrat
 {
 	private:
@@ -19,6 +21,8 @@ class Bureaucrat
 
 		int	getGrade() const;
 		std::string getName() const;
+		void	signForm(AForm &form);
+		void	executeForm(AForm const & form);
 
 		void	IncrementGrade();
 		void	DecrementGrade();
