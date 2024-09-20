@@ -39,7 +39,7 @@ bool	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		if (executor.getGrade() > this->getRequiredExecute())
 			throw executor.getGrade();
 		filename = this->getName() + "_shrubbery";
-		readFile.open(filename);
+		readFile.open(filename.c_str());
 		if (readFile.is_open())
 		{
 			readFile << "       ,@@@@@@@, \n";
