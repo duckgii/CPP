@@ -17,7 +17,7 @@ class AForm
 		AForm();
 		AForm(std::string _name, bool issigned, int requirdsign, int requiredexecute);
 		AForm(AForm &copy);
-		~AForm();
+		virtual ~AForm();
 		AForm& operator=(AForm &in);
 
 		bool	getSigned() const;

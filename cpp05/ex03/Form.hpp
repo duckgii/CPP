@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef Form_HPP
+# define Form_HPP
 
 # include <iostream>
 # include <string>
@@ -21,13 +21,15 @@ class Form
 		Form& operator=(Form &in);
 
 		bool	getSigned() const;
+		void	setSigned();
 		std::string getName() const;
 		int		getRequiredSign() const;
 		int		getRequiredExecute() const;
 
 		bool	beSigned(Bureaucrat &bureaucrat);
-		void	GradeTooHighException(std::string option, int value);
-		void	GradeTooLowException(std::string option, int value);
+		void	GradeTooHighException(std::string option, int value) const;
+		void	GradeTooLowException(std::string option, int value) const;
+		virtual bool	execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream& operator<<(std::ostream &out, const Form &in);
