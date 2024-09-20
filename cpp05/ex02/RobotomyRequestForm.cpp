@@ -1,12 +1,14 @@
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 #include <cstdlib>
+#include <ctime>
+
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", false, 72, 45)
 {
 	std::cout<<"RobotomyRequestForm default constructor is called"<<std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string _name) : AForm(_name, false, 72, 45) {}
+RobotomyRequestForm::RobotomyRequestForm(std::string _name) : AForm(_name, false, 72, 45) {srand(time(0));}
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &copy) : AForm(copy)
 {
@@ -35,8 +37,8 @@ bool	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	{
 		if (executor.getGrade() > this->getRequiredExecute())
 			throw executor.getGrade();
-		std::cout<<"Drrrrrrrrrrrrrrrrrrrr!!";
-		if (rand() % 2)
+		std::cout<<"Drrrrrrrrrrrrrrrrrrrr!!\n";
+		if ((1 + rand()) % 6 > 2)
 			std::cout<<this->getName()<<" has been robotomized successfully"<<std::endl;
 		else
 			std::cout<<this->getName()<<" robotomy failed."<<std::endl;
