@@ -9,6 +9,11 @@ class AForm;
 class Bureaucrat
 {
 	private:
+		class IsNotSigned : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+
 		class GradeTooHighException : public std::exception
 		{
 			virtual const char* what() const throw();

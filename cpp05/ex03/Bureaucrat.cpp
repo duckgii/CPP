@@ -1,6 +1,11 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
+const char* Bureaucrat::IsNotSigned::what() const throw()
+{
+	return "It is not signed!!";
+}
+
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return "Grade is too Low!!";
@@ -85,6 +90,8 @@ void	Bureaucrat::signForm(AForm &Aform)
 
 void	Bureaucrat::executeForm(AForm const & form)
 {
+	if (!form.getSigned())
+		throw Bureaucrat::IsNotSigned();
 	form.execute(*this);
 	std::cout<<this->getName()<<" executed "<<form.getName()<<std::endl;
 }

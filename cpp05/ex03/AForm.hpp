@@ -8,7 +8,6 @@ class Bureaucrat;
 class AForm
 {
 	private:
-
 		std::string const name;
 		bool	IsSigned;
 		int	const	RequiredSign;

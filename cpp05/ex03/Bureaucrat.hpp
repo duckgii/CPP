@@ -9,6 +9,16 @@ class AForm;
 class Bureaucrat
 {
 	private:
+		
+		std::string	const name;
+		int			grade;
+	
+	public:
+		class IsNotSigned : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+		
 		class GradeTooHighException : public std::exception
 		{
 			virtual const char* what() const throw();
@@ -18,11 +28,7 @@ class Bureaucrat
 		{
 			virtual const char* what() const throw();
 		};
-		
-		std::string	const name;
-		int			grade;
-	
-	public:
+
 		Bureaucrat();
 		Bureaucrat(std::string _name, int _grade);
 		Bureaucrat(const Bureaucrat& copy);
