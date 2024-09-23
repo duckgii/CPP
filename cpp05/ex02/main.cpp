@@ -12,6 +12,8 @@ int main()
 	RobotomyRequestForm	form2("window");
 	ShrubberyCreationForm	form3("centos");
 
+	try
+	{
 	std::cout<<shin1;
 	std::cout<<shin2;
 	
@@ -24,10 +26,6 @@ int main()
 	shin1.signForm(form2);
 	shin1.signForm(form3);
 	std::cout<<std::endl;
-
-	shin1.IncrementGrade();
-	shin1.signForm(form1);
-	std::cout<<std::endl<<std::endl;
 
 	shin2.signForm(form1);
 	shin2.signForm(form2);
@@ -47,6 +45,10 @@ int main()
 	shin2.executeForm(form2);
 	shin2.executeForm(form3);
 	std::cout<<std::endl<<std::endl;
-
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return (0);
 }

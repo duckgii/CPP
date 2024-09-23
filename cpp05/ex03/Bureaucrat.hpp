@@ -4,11 +4,21 @@
 # include <string>
 # include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
 	private:
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+		
 		std::string	const name;
 		int			grade;
 	
@@ -21,13 +31,12 @@ class Bureaucrat
 
 		int	getGrade() const;
 		std::string getName() const;
-		void	signForm(Form &form);
-		void	executeForm(Form const & form);
+		void	signForm(AForm &Aform);
+		void	executeForm(AForm const & form);
+
 
 		void	IncrementGrade();
 		void	DecrementGrade();
-		void	GradeTooHighException();
-		void	GradeTooLowException();
 };
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat &in);

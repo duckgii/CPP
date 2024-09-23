@@ -1,9 +1,9 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
 
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
 	public:
 		PresidentialPardonForm();
@@ -12,6 +12,6 @@ class PresidentialPardonForm : public Form
 		~PresidentialPardonForm();
 		PresidentialPardonForm& operator=(PresidentialPardonForm &in);
 
-		bool	execute(Bureaucrat const & executor) const;
+		void	execute(Bureaucrat const & executor) const;
 };
 #endif

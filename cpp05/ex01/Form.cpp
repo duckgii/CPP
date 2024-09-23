@@ -1,6 +1,16 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high!!";
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return "Grade is too Low!!";
+}
+
 Form::Form() : name(""), IsSigned(false), RequiredSign(1), RequiredExecute(1) // 이니셜라이저는 변수 초기화를 변수 선언 순서대로 진행해야한다.
 {
 	std::cout<<"Form default constructor is called"<<std::endl;
@@ -8,34 +18,14 @@ Form::Form() : name(""), IsSigned(false), RequiredSign(1), RequiredExecute(1) //
 
 Form::Form(std::string _name, bool issigned, int requirdsign, int requiredexecute) : name(_name), IsSigned(issigned), RequiredSign(requirdsign), RequiredExecute(requiredexecute) // 이니셜라이저는 변수 초기화를 변수 선언 순서대로 진행해야한다.
 {
-	try
-	{
-		if (requirdsign > 150)
-			throw requirdsign;
-		else if (requirdsign < 1)
-			throw requirdsign;
-	}
-	catch(const int	requirdsign)
-	{
-		if (requirdsign > 150)
-			this->GradeTooLowException("RequiredSign", requirdsign);
-		else
-			this->GradeTooHighException("RequiredSign", requirdsign);
-	}
-	try
-	{
-		if (requiredexecute > 150)
-			throw requiredexecute;
-		else if (requiredexecute < 1)
-			throw requiredexecute;
-	}
-	catch(const int	requiredexecute)
-	{
-		if (requiredexecute > 150)
-			this->GradeTooLowException("RequiredExecute", requiredexecute);
-		else
-			this->GradeTooHighException("RequiredExecute", requiredexecute);
-	}
+	if (requirdsign > 150)
+		throw Form::GradeTooLowException();
+	else if (requirdsign < 1)
+		throw Form::GradeTooHighException();
+	if (requiredexecute > 150)
+		throw Form::GradeTooLowException();
+	else if (requiredexecute < 1)
+		throw Form::GradeTooHighException();
 }
 
 Form::Form(Form &copy) : name(copy.getName()), IsSigned(copy.getSigned()), RequiredSign(copy.getRequiredSign()), RequiredExecute(copy.getRequiredExecute())
@@ -65,16 +55,6 @@ std::string Form::getName() const {return (name);};
 int		Form::getRequiredSign() const {return (RequiredSign);};
 int		Form::getRequiredExecute() const {return (RequiredExecute);};
 
-void Form::GradeTooHighException(std::string option, int value)
-{
-	std::cout<<this->getName()<<"'s "<<option<<" is Too High. its Grade is "<<value<<std::endl;
-}
-
-void Form::GradeTooLowException(std::string option, int value)
-{
-	std::cout<<this->getName()<<"'s "<<option<<" is Too Low. its Grade is "<<value<<std::endl;
-}
-
 std::ostream& operator<<(std::ostream &out, const Form &in) 
 {
 	std::string sign;
@@ -83,19 +63,9 @@ std::ostream& operator<<(std::ostream &out, const Form &in)
 	return (out);
 }
 
-bool	Form::beSigned(Bureaucrat &bureaucrat)
+void	Form::beSigned(Bureaucrat &bureaucrat)
 {
-	try
-	{
-		if (bureaucrat.getGrade() > this->getRequiredSign())
-			throw bureaucrat.getGrade();
-		this->IsSigned = true;
-		return (true);
-	}
-	catch(const int	Grade)
-	{
-		this->GradeTooLowException("RequiredSign", Grade);
-		return (false);
-	}
-	
+	if (bureaucrat.getGrade() > this->getRequiredSign())
+		throw Form::GradeTooLowException();
+	this->IsSigned = true;
 }

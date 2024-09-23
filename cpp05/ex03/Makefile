@@ -7,7 +7,7 @@ SRCS = main.cpp \
 		PresidentialPardonForm.cpp\
 		RobotomyRequestForm.cpp\
 		ShrubberyCreationForm.cpp\
-		Form.cpp\
+		AForm.cpp\
 		Intern.cpp
 
 SRCS_OBJS = main.o \
@@ -15,7 +15,7 @@ SRCS_OBJS = main.o \
 			RobotomyRequestForm.o\
 			ShrubberyCreationForm.o\
 			Bureaucrat.o \
-			Form.o\
+			AForm.o\
 			Intern.o
 
 all : $(NAME)

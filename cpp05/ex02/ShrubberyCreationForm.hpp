@@ -13,6 +13,6 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm& operator=(ShrubberyCreationForm &in);
 
-		bool	execute(Bureaucrat const & executor) const;
+		void	execute(Bureaucrat const & executor) const;
 };
 #endif

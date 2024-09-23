@@ -9,6 +9,16 @@ class Form;
 class Bureaucrat
 {
 	private:
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+		
 		std::string	const name;
 		int			grade;
 	
@@ -25,8 +35,6 @@ class Bureaucrat
 
 		void	IncrementGrade();
 		void	DecrementGrade();
-		void	GradeTooHighException();
-		void	GradeTooLowException();
 };
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat &in);

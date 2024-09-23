@@ -1,9 +1,9 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
 	public:
 		RobotomyRequestForm();
@@ -12,7 +12,7 @@ class RobotomyRequestForm : public Form
 		~RobotomyRequestForm();
 		RobotomyRequestForm& operator=(RobotomyRequestForm &in);
 
-		bool	execute(Bureaucrat const & executor) const;
+		void	execute(Bureaucrat const & executor) const;
 
 };
 #endif

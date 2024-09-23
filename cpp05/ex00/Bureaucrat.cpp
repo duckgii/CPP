@@ -1,5 +1,15 @@
 #include "Bureaucrat.hpp"
 
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade is too Low!!";
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade is too High!!";
+}
+
 Bureaucrat::Bureaucrat() : name("none")
 {
 	std::cout<<"Bureaucrat Default constructor is called"<<std::endl;
@@ -8,22 +18,11 @@ Bureaucrat::Bureaucrat() : name("none")
 
 Bureaucrat::Bureaucrat(std::string const _name, int const _grade) : name(_name)
 {
-	try
-	{
-		grade = _grade;
-		if (_grade > 150)
-			throw _grade;
-		else if (_grade < 1)
-			throw _grade;
-	}
-	catch(const int	_grade)
-	{
-		if (_grade > 150)
-			this->GradeTooLowException();
-		else
-			this->GradeTooHighException();
-	}
-	
+	if (_grade > 150)
+		throw GradeTooLowException();
+	else if (_grade < 1)
+		throw GradeTooHighException();
+	grade = _grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.getName())
@@ -60,49 +59,19 @@ int Bureaucrat::getGrade() const {return (grade);}
 
 std::string Bureaucrat::getName() const {return (name);}
 
-void	Bureaucrat::GradeTooHighException()
-{
-	std::cout<<this->getName()<<"'s grade is Too High. Maximum Grade is 1"<<std::endl;
-}
-
-void	Bureaucrat::GradeTooLowException()
-{
-	std::cout<<this->getName()<<"'s grade is Too Low. Minimum Grade is 150"<<std::endl;
-}
-
 void	Bureaucrat::IncrementGrade()
 {
-	try
-	{
-		if (grade < 2)
-			throw grade;
-		else if (grade > 150)
-			throw grade;
-		grade--;
-	}
-	catch(const int grade)
-	{
-		if (grade > 150)
-			this->GradeTooLowException();
-		else
-			this->GradeTooHighException();
-	}
+	if (grade < 2)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > 150)
+		throw  Bureaucrat::GradeTooLowException();
+	grade -= 1;
 }
 void	Bureaucrat::DecrementGrade()
 {
-	try
-	{
-		if (grade < 1)
-			throw grade;
-		else if (grade > 149)
-			throw grade;
-		grade++;
-	}
-	catch(const int grade)
-	{
-		if (grade > 149)
-			this->GradeTooLowException();
-		else
-			this->GradeTooHighException();
-	}
+	if (grade < 1)
+		throw  GradeTooHighException();
+	else if (grade > 149)
+		throw  GradeTooLowException();
+	grade++;
 }

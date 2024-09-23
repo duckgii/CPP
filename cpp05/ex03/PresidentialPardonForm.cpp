@@ -1,14 +1,14 @@
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonForm", false, 25, 5)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", false, 25, 5)
 {
 	std::cout<<"PresidentialPardonForm default constructor is called"<<std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string _name) : Form(_name, false, 25, 5) {}
+PresidentialPardonForm::PresidentialPardonForm(std::string _name) : AForm(_name, false, 25, 5) {}
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &copy) : Form(copy)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &copy) : AForm(copy)
 {
 	std::cout<<"PresidentialPardonForm copy constructor is called"<<std::endl;
 }
@@ -29,18 +29,9 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm
 	return (*this);
 }
 
-bool	PresidentialPardonForm::execute(Bureaucrat const & executor) const
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	try
-	{
-		if (executor.getGrade() > this->getRequiredExecute())
-			throw executor.getGrade();
-		std::cout<<this->getName()<<" has been pardoned by Zaphod Beeblebrox."<<std::endl;
-		return (true);
-	}
-	catch(const int grade)
-	{
-		this->GradeTooLowException("RequiredSign", grade);
-		return (false);
-	}
+	if (executor.getGrade() > this->getRequiredExecute())
+		throw AForm::GradeTooLowException();
+	std::cout<<this->getName()<<" has been pardoned by Zaphod Beeblebrox."<<std::endl;
 }

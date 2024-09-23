@@ -8,6 +8,16 @@ class Bureaucrat;
 class Form
 {
 	private:
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+
 		std::string const name;
 		bool	IsSigned;
 		int	const	RequiredSign;
@@ -25,9 +35,7 @@ class Form
 		int		getRequiredSign() const;
 		int		getRequiredExecute() const;
 
-		bool	beSigned(Bureaucrat &bureaucrat);
-		void	GradeTooHighException(std::string option, int value);
-		void	GradeTooLowException(std::string option, int value);
+		void	beSigned(Bureaucrat &bureaucrat);
 };
 
 std::ostream& operator<<(std::ostream &out, const Form &in);

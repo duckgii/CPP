@@ -1,7 +1,7 @@
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <string>
 
 class Intern 
@@ -12,10 +12,10 @@ class Intern
 		~Intern();
 		Intern&	operator=(Intern &in);
 
-		Form*	makeForm(std::string name, std::string target);
-		static Form*	make_robo(std::string target);
-		static Form*	make_shru(std::string target);
-		static Form*	make_presi(std::string target);
+		AForm*	makeForm(std::string name, std::string target);
+		static AForm*	make_robo(std::string target);
+		static AForm*	make_shru(std::string target);
+		static AForm*	make_presi(std::string target);
 };
 
 

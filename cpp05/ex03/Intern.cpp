@@ -31,24 +31,24 @@ Intern&	Intern::operator=(Intern &in)
 	return (*this);
 }
 
-Form* Intern::make_robo(std::string target)
+AForm* Intern::make_robo(std::string target)
 {
 	return (new RobotomyRequestForm(target));
 }
 
-Form* Intern::make_shru(std::string target)
+AForm* Intern::make_shru(std::string target)
 {
 	return (new ShrubberyCreationForm(target));
 }
 
-Form* Intern::make_presi(std::string target)
+AForm* Intern::make_presi(std::string target)
 {
 	return (new PresidentialPardonForm(target));
 }
 
-Form*	Intern::makeForm(std::string name, std::string target)
+AForm*	Intern::makeForm(std::string name, std::string target)
 {
-	Form* (*fp[3])(std::string);
+	AForm* (*fp[3])(std::string);
 	std::string form_name[3];
 
 	form_name[0] = "robotomy request";
