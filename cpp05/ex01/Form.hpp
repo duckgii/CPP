@@ -35,7 +35,7 @@ class Form
 		int		getRequiredSign() const;
 		int		getRequiredExecute() const;
 
-		void	beSigned(Bureaucrat &bureaucrat);
+		bool	beSigned(Bureaucrat &bureaucrat);
 };
 
 std::ostream& operator<<(std::ostream &out, const Form &in);

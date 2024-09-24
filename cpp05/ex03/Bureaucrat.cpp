@@ -84,8 +84,12 @@ void	Bureaucrat::DecrementGrade()
 
 void	Bureaucrat::signForm(AForm &Aform)
 {
-	Aform.beSigned(*this);
-	std::cout<<this->getName()<<" signed "<<Aform.getName()<<std::endl;
+	if (Aform.getSigned())
+		std::cout<<this->getName()<<"couldn’t signed "<<Aform.getName()<<"because Form is already signed"<<std::endl;
+	else if (Aform.beSigned(*this))
+		std::cout<<this->getName()<<" signed "<<Aform.getName()<<std::endl;
+	else
+		std::cout<<this->getName()<<"couldn’t signed "<<Aform.getName()<<"because Grade is not enough"<<std::endl;
 }
 
 void	Bureaucrat::executeForm(AForm const & form)
