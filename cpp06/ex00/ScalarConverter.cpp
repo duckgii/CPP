@@ -66,7 +66,7 @@ void	ScalarConverter::convert(const char *input)
 		std::cout<<"Input value is invalid!!!!!!"<<std::endl;
 		return;
 	}
-	std::cout.precision(10);
+	std::cout.precision(5);
 
 	std::cout<<"char : ";
 	if (in == "nan")
