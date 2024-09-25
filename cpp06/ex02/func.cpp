@@ -43,8 +43,15 @@ void identify(Base& p)
 		}
 		catch (const std::exception& e)
 		{
-			c = dynamic_cast<C&>(p);
-			std::cout<<"this class is C"<<std::endl;
+			try
+			{
+				c = dynamic_cast<C&>(p);
+				std::cout<<"this class is C"<<std::endl;
+			}
+			catch (const std::exception& e)
+			{
+				std::cout<<e.what()<<std::endl;
+			}
 		}
 	}
 }

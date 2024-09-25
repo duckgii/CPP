@@ -19,7 +19,7 @@ int main()
 	identify(base1);
 	identify(base2);
 	identify(base3);
-	
+
 	identify(*base1);
 	identify(*base2);
 	identify(*base3);
