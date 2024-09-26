@@ -35,7 +35,7 @@ class AForm
 		int		getRequiredSign() const;
 		int		getRequiredExecute() const;
 
-		bool	beSigned(Bureaucrat &bureaucrat);
+		void	beSigned(Bureaucrat &bureaucrat);
 		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 };

@@ -79,11 +79,16 @@ void	Bureaucrat::DecrementGrade()
 
 void	Bureaucrat::signForm(Form &form)
 {
-	if (form.getSigned())
-		std::cout<<this->getName()<<"couldn’t signed "<<form.getName()<<"because Form is already signed"<<std::endl;
-	else if (form.beSigned(*this))
+	try
+	{
+		form.beSigned(*this);
 		std::cout<<this->getName()<<" signed "<<form.getName()<<std::endl;
-	else
-		std::cout<<this->getName()<<"couldn’t signed "<<form.getName()<<"because Grade is not enough"<<std::endl;
-
+	}
+	catch(const std::exception& e)
+	{
+		if (form.getSigned())
+			std::cout<<this->getName()<<" couldn’t signed "<<form.getName()<<" because Form is already signed"<<std::endl;
+		else
+			std::cout<<this->getName()<<" couldn’t signed "<<form.getName()<<" because Grade is not enough"<<std::endl;
+	}
 }

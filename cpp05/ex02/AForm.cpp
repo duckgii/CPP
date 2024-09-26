@@ -63,10 +63,9 @@ std::ostream& operator<<(std::ostream &out, const AForm &in)
 	return (out);
 }
 
-bool	AForm::beSigned(Bureaucrat &bureaucrat)
+void	AForm::beSigned(Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->getRequiredSign() || this->IsSigned == true)
-		return (false);
+		throw AForm::GradeTooLowException();
 	this->IsSigned = true;
-	return (true);
 }

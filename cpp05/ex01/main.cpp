@@ -25,7 +25,7 @@ int main()
 	shin1.signForm(form3);
 	std::cout<<std::endl;
 
-	shin1.IncrementGrade();
+	//shin1.IncrementGrade();
 	shin1.signForm(form1);
 	std::cout<<std::endl<<std::endl;
 
