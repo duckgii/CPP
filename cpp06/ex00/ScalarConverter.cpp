@@ -68,13 +68,12 @@ void	ScalarConverter::convert(const char *input)
 	}
 	std::cout.precision(5);
 
-	std::cout<<static_cast<char>(static_cast<int>(num))<<std::endl;
 	std::cout<<"char : ";
 	if (in == "nan")
 		std::cout<<"impossible"<<std::endl;
 	else if  (num > CHAR_MAX)
 		std::cout<<"impossible"<<std::endl;
-	else if (std::isprint(static_cast<char>(static_cast<int>(num))))
+	else if (std::isprint(static_cast<char>(static_cast<int>(num)))) // double을 바로 char로 바꾸려고 하면 에러가 발생함 ->큰 값인 부동소수점 -> 작은 값인 고정소수점이라서. int형으로 중간에 한번 바꿔주는게 안정적임.
 		std::cout<<"'"<<static_cast<char>(static_cast<int>(num))<<"'"<<std::endl;
 	else
 		std::cout<<"Non displayable"<<std::endl;
