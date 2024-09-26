@@ -3,7 +3,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <cctype>
-#include <limits>
+#include <climits>
 #include <cfloat>
 
 ScalarConverter::ScalarConverter()
@@ -69,12 +69,13 @@ void	ScalarConverter::convert(const char *input)
 	std::cout.precision(5);
 
 	std::cout<<"char : ";
+	// std::cout<<static_cast<char>(num)<<std::endl;
 	if (in == "nan")
 		std::cout<<"impossible"<<std::endl;
-	else if (std::isprint(static_cast<int>(num)))
-		std::cout<<"'"<<static_cast<char>(num)<<"'"<<std::endl;
 	else if  (num > CHAR_MAX)
 		std::cout<<"impossible"<<std::endl;
+	else if (std::isprint(static_cast<char>(num)))
+		std::cout<<"'"<<static_cast<char>(num)<<"'"<<std::endl;
 	else
 		std::cout<<"Non displayable"<<std::endl;
 		
@@ -100,9 +101,9 @@ void	ScalarConverter::convert(const char *input)
 	std::cout<<"double : ";
 	if (in == "nan")
 		std::cout<<"nan"<<std::endl;
-	else if (num > FLT_MAX && num > 0)
+	else if (num > DBL_MAX && num > 0)
 		std::cout<<"inf"<<std::endl;
-	else if (num < -1 * FLT_MIN)
+	else if (num < -1 * DBL_MIN)
 		std::cout<<"-inf"<<std::endl;
 	else
 		std::cout<<static_cast<double>(num)<<((static_cast<int>(num) ==  num) ? ".0" : "")<<std::endl;
