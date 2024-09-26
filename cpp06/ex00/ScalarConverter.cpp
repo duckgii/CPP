@@ -68,13 +68,14 @@ void	ScalarConverter::convert(const char *input)
 	}
 	std::cout.precision(5);
 
+	std::cout<<static_cast<char>(static_cast<int>(num))<<std::endl;
 	std::cout<<"char : ";
 	if (in == "nan")
 		std::cout<<"impossible"<<std::endl;
 	else if  (num > CHAR_MAX)
 		std::cout<<"impossible"<<std::endl;
-	else if (std::isprint(static_cast<char>(num)))
-		std::cout<<"'"<<static_cast<char>(num)<<"'"<<std::endl;
+	else if (std::isprint(static_cast<char>(static_cast<int>(num))))
+		std::cout<<"'"<<static_cast<char>(static_cast<int>(num))<<"'"<<std::endl;
 	else
 		std::cout<<"Non displayable"<<std::endl;
 		
