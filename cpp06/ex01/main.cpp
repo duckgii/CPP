@@ -1,6 +1,8 @@
 #include "Serializer.hpp"
 #include <iostream>
 
+//reinterpret_cast는 임의의 포인터 타입끼리 변환을 허용해주는 캐스팅이다.
+
 int main()
 {
 	Data *data = new Data();
