@@ -2,11 +2,9 @@ CC = c++
 NAME = a.out
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-SRCS = main.cpp \
-		Bureaucrat.cpp
+SRCS = main.cpp 
 
-SRCS_OBJS = main.o \
-			Bureaucrat.o
+SRCS_OBJS = main.o 
 
 all : $(NAME)
 
