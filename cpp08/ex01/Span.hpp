@@ -5,6 +5,8 @@
 # include <vector>
 # include <cstdlib>
 # include <cmath>
+# include <climits>
+
 //알고리즘 헤더 사용해보는 과제
 class Span
 {
