@@ -4,6 +4,8 @@
 #include <stack>
 #include <algorithm>
 
+//각 컨테이너의 내부 구조를 공부하라는 것 같은 과제.
+
 template <typename T>
 class MutantStack : public std::stack<T>
 {
