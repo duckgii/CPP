@@ -1,17 +1,13 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
-//이터레이터 써보라는 느낌의 과제
+# include <algorithm>
+# include <iostream>
+
 template <typename T>
-int	easyfind(T container, int find)
+typename T::iterator	easyfind(T &container, int find) //레퍼런스 안 붙이면 임시객체의 end()가 반환돼서 main문에서 num.end()와 달라진다.
 {
-	int idx = 0;
-	for (typename T::iterator iter = container.begin(); iter != container.end(); iter++)
-	{
-		if (*iter == find)
-			return (idx);
-		idx++;
-	}
-	return (-1);
+
+	return (std::find(container.begin(), container.end(), find));
 }
 
 #endif
