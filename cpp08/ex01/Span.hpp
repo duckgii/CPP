@@ -16,7 +16,6 @@ class Span
 		{
 			virtual const char* what() const throw();
 		};
-	public:
 		class TooManyNumber : public std::exception
 		{
 			virtual const char* what() const throw();
@@ -24,6 +23,8 @@ class Span
 		unsigned int N;
 		unsigned int idx;
 		std::vector<int> store;
+
+	public:
 		Span();
 		Span(unsigned int n);
 		Span(const Span &copy);
@@ -33,18 +34,19 @@ class Span
 		void	addNumber(int input);
 		long long		shortestSpan(void);
 		long long		longestSpan(void);
+
+		template <typename T>
+		void	addManyNumber(T& input)
+		{
+			if (this->N >= this->idx + 1 + input.size())
+			{
+				this->store.insert(this->store.end(), input.begin(), input.end());
+				this->idx += input.size();
+			}
+			else
+				throw Span::TooManyNumber();
+		}
 };
 
-template <typename T>
-void	addManyNumber(Span &S, T& input)
-{
-	if (S.N >= S.idx + 1 + input.size())
-	{
-		S.store.insert(S.store.end(), input.begin(), input.end());
-		S.idx += input.size();
-	}
-	else
-		throw Span::TooManyNumber();
-}
 
 #endif

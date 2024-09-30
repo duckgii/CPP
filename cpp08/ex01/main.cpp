@@ -17,7 +17,7 @@ int main()
 	}
 	try
 	{
-		addManyNumber(num1, RandNum);
+		num1.addManyNumber(RandNum);
 		std::cout<<num1.shortestSpan()<<std::endl;
 		std::cout<<num1.longestSpan()<<std::endl;
 	}
@@ -32,7 +32,7 @@ int main()
 	}
 	try
 	{
-		addManyNumber(num2, testNum);
+		num2.addManyNumber(testNum);
 		std::cout<<num2.shortestSpan()<<std::endl;
 		std::cout<<num2.longestSpan()<<std::endl;
 	}
