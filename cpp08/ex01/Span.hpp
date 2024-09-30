@@ -8,26 +8,43 @@
 # include <climits>
 
 //알고리즘 헤더 사용해보는 과제
+
 class Span
 {
 	private :
+		class EmptyNumber : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
+	public:
 		class TooManyNumber : public std::exception
 		{
 			virtual const char* what() const throw();
 		};
 		unsigned int N;
+		unsigned int idx;
 		std::vector<int> store;
-	public:
 		Span();
 		Span(unsigned int n);
-		Span(Span &copy);
+		Span(const Span &copy);
 		~Span();
-		Span& operator=(Span &in);
+		Span& operator=(const Span &in);
 
 		void	addNumber(int input);
-		void	addManyNumber(int input);
 		long long		shortestSpan(void);
 		long long		longestSpan(void);
 };
+
+template <typename T>
+void	addManyNumber(Span &S, T& input)
+{
+	if (S.N >= S.idx + 1 + input.size())
+	{
+		S.store.insert(S.store.end(), input.begin(), input.end());
+		S.idx += input.size();
+	}
+	else
+		throw Span::TooManyNumber();
+}
 
 #endif
