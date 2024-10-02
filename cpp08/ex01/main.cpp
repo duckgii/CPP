@@ -8,7 +8,7 @@ int main()
 	srand(time(0));
 	std::vector<int>	RandNum;
 	std::vector<int>	testNum;
-	Span num1(14);
+	Span num1(50000);
 	Span num2(2);
 
 	for (int i = 0; i < 50000; i++)

@@ -38,7 +38,7 @@ class Span
 		template <typename T>
 		void	addManyNumber(T& input)
 		{
-			if (this->N >= this->idx + 1 + input.size())
+			if (this->N >= this->idx + input.size())
 			{
 				this->store.insert(this->store.end(), input.begin(), input.end());
 				this->idx += input.size();

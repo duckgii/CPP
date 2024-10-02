@@ -41,7 +41,7 @@ Span& Span::operator=(const Span &in)
 
 void	Span::addNumber(int input)
 {
-	if (this->store.size() < N)
+	if (this->store.size() <= N)
 	{
 		this->store.push_back(input);
 		idx++;

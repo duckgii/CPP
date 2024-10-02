@@ -11,6 +11,10 @@ int main()
 	{
 		num.push_back(i);
 	}
+	for (int i = 1; i < 11; i++)
+	{
+		num.push_back(i);
+	}
 	for (int i = 0; i < 15; i++)
 	{
 		ite = easyfind(num, i);
