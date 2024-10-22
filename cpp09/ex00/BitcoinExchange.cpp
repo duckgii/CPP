@@ -100,16 +100,16 @@ int	BitcoinExchange::get_date(std::string &line)
 	return (ret);
 }
 
-void	BitcoinExchange::find_data(int date, float value, std::string date_s)
+void	BitcoinExchange::find_data(int date, double value, std::string date_s)
 {
 	double pre_value = data.begin()->second;
-	for (std::map<int, float>::iterator ite = data.begin(); ite != data.end(); ite++)
+	for (std::map<int, double>::iterator ite = data.begin(); ite != data.end(); ite++)
 	{
 		if (date < ite->first)
 			break;
 		pre_value = ite->second;
 	}
-	std::cout<<date_s<<" => "<<value<<" = "<<value * pre_value<<std::endl;
+	std::cout<<date_s<<" => "<<value<<" = "<<static_cast<long>(value * pre_value)<<std::endl;
 }
 
 void	BitcoinExchange::dataParse(std::string line, int mode)
@@ -118,7 +118,7 @@ void	BitcoinExchange::dataParse(std::string line, int mode)
 	std::string		date_line;
 	std::string value_s;
 	std::string error;
-	float 		value_f;
+	double 		value_f;
 	char	dilimiter;
 	std::string	temp;
 	int	date = 0;

@@ -1,12 +1,12 @@
 CC = c++
-NAME = a.out
+NAME = RPN
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 SRCS = main.cpp \
-		Span.cpp
+		RPN.cpp
 		
 SRCS_OBJS = main.o \
-			Span.o
+			RPN.o
 
 all : $(NAME)
 
