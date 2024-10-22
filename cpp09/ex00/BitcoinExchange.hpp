@@ -12,7 +12,7 @@ class BitcoinExchange
 		{
 			virtual const char* what() const throw();
 		};
-		std::map<std::string, float>	data;
+		std::map<int, float>	data;
 
 	public:
 		BitcoinExchange();
@@ -20,13 +20,15 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange &copy);
 		BitcoinExchange& operator=(const BitcoinExchange &in);
 
-		void	getData(void);
-		void	dataParse(std::string line);
+		void	find_data(int date, float value, std::string date_s);
+		void	getData(std::string filename, int mode);
+		void	dataParse(std::string line, int mode);
 		void	dateBadInput(std::string error);
 		void	negativeNumError(void);
 		void	tooLargeError(void);
 		void	wrongInputStyle(void);
-		void	readFile(std::string filename);
+		int		get_date(std::string &line);
+		bool	check_value(std::string num);
 };
 
 #endif
