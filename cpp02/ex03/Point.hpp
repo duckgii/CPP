@@ -6,7 +6,7 @@
 class Point
 {
 	private:
-		Fixed	x;
+		Fixed	x; //const 붙여야함
 		Fixed	y;
 	public:
 		Point();

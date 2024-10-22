@@ -1,12 +1,12 @@
 CC = c++
-NAME = a.out
+NAME = PmergeMe
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 SRCS = main.cpp \
-		Span.cpp
+		PmergeMe.cpp
 		
 SRCS_OBJS = main.o \
-			Span.o
+			PmergeMe.o
 
 all : $(NAME)
 

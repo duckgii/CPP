@@ -30,7 +30,7 @@ Point&	Point::operator=(const Point &in)
 {
 	if (this == &in)
 		return (*this);
-	x = in.x;
+	x = in.x; //같은 종류의 클래스끼리는 프라이빗 변수에 접근가능
 	y = in.y;
 	return (*this);
 }
