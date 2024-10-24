@@ -27,4 +27,5 @@ int main(int ac, char *av[])
 	}
 	obj.inputData(input);
 	obj.runVector();
+	obj.rundeque();
 }

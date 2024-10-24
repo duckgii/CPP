@@ -11,12 +11,13 @@
 # include <cmath>
 # include <list>
 # include <ctime>
+# include <deque>
 
 class PmergeMe
 {
 	private:
 		std::vector<std::pair<int, int> >	container_v;
-		std::list<std::pair<int, int> > container_l;
+		std::deque<std::pair<int, int> > container_d;
 
 	public:
 		PmergeMe();
@@ -25,8 +26,9 @@ class PmergeMe
 		PmergeMe& operator=(PmergeMe const &in);
 		void	inputData(std::string input);
 		void	runVector();
-		void	runlist();
+		void	rundeque();
 		std::vector<std::pair<int, int> > recur_v(std::vector<std::pair<int, int> > input);
+		std::deque<std::pair<int, int> > recur_d(std::deque<std::pair<int, int> > input);
 		std::vector<std::pair<int, int> > getContainer_v() const;
 };
 
