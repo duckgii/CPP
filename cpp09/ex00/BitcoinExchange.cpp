@@ -109,7 +109,7 @@ void	BitcoinExchange::find_data(int date, double value, std::string date_s)
 			break;
 		pre_value = ite->second;
 	}
-	std::cout<<date_s<<" => "<<value<<" = "<<static_cast<long>(value * pre_value)<<std::endl;
+	std::cout<<date_s<<" => "<<value<<" = "<<static_cast<double>(value * pre_value)<<std::endl;
 }
 
 void	BitcoinExchange::dataParse(std::string line, int mode)
