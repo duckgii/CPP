@@ -9,11 +9,14 @@
 # include <cstdlib>
 # include <algorithm>
 # include <cmath>
+# include <list>
 
 class PmergeMe
 {
 	private:
 		std::vector<std::pair<int, int> >	container_v;
+		std::list<std::pair<int, int> > container_l;
+
 	public:
 		PmergeMe();
 		~PmergeMe();
@@ -21,8 +24,8 @@ class PmergeMe
 		PmergeMe& operator=(PmergeMe const &in);
 		void	inputData(std::string input);
 		void	runVector();
-		void	runDeque();
-		std::vector<std::pair<int, int> > recur(std::vector<std::pair<int, int> > input);
+		void	runlist();
+		std::vector<std::pair<int, int> > recur_v(std::vector<std::pair<int, int> > input);
 		std::vector<std::pair<int, int> > getContainer_v() const;
 };
 
