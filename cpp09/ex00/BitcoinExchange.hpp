@@ -8,9 +8,15 @@
 class BitcoinExchange
 {
 	private:
-		class	OpenError : std::exception
+		class	OpenErrorException : public std::exception
 		{
-			virtual const char* what() const throw();
+			public :
+				virtual const char* what() const throw();
+		};
+		class	WrongInputException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
 		};
 		std::map<int, double>	data;
 

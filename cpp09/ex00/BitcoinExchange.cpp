@@ -2,9 +2,15 @@
 #include <fstream>
 #include <cctype>
 #include <sstream>
-const char* BitcoinExchange::OpenError::what() const throw()
+
+const char* BitcoinExchange::OpenErrorException::what() const throw()
 {
-	return ("Open Error");
+	return ("Error: could not open file.");
+}
+
+const char* BitcoinExchange::WrongInputException::what() const throw()
+{
+	return ("Error : wrong input style.");
 }
 
 BitcoinExchange::BitcoinExchange() {}
@@ -59,6 +65,11 @@ int	BitcoinExchange::get_date(std::string &line)
 			return (0);
 		}
 		date += temp;
+	}
+	if (getline(input_date, temp, '-'))
+	{
+		this->dateBadInput(error);
+		return (0);
 	}
 	if (static_cast<int>(date.length()) != 8)
 	{
@@ -146,6 +157,11 @@ void	BitcoinExchange::dataParse(std::string line, int mode)
 	if (check_value(value_s) == false)
 		return ;
 	value_f = std::strtod(value_s.c_str(), 0);
+	if (getline(all_input, value_s, dilimiter) || value_s.length() == 0)
+	{
+		this->dateBadInput(line);
+		return ;
+	}
 	if (mode == 1)
 		this->data.insert(std::make_pair(date, value_f));
 	else
@@ -158,15 +174,15 @@ void	BitcoinExchange::getData(std::string filename, int mode)
 	std::string		line;
 	std::ifstream	readFile;
 
+	//std::cout<<"hi"<<std::endl;
 	readFile.open(filename);
 	if (readFile.is_open())
 	{
 		getline(readFile, line);
 		if ((mode == 1 && line != "date,exchange_rate") || (mode == 2 && line != "date | value"))
 		{
-			this->wrongInputStyle(); //-> 못 읽었을 경우에는 다음 파싱에서도 에러처리 해야함 ...?
 			readFile.close();
-			return ;
+			throw BitcoinExchange::WrongInputException(); //-> 못 읽었을 경우에는 다음 파싱에서도 에러처리 해야함 ...?
 		}
 		while (!readFile.eof())
 		{
@@ -178,7 +194,7 @@ void	BitcoinExchange::getData(std::string filename, int mode)
 		readFile.close();
 	}
 	else
-		throw OpenError();
+		throw BitcoinExchange::OpenErrorException();
 }
 
 bool	BitcoinExchange::check_value(std::string num)
@@ -195,10 +211,14 @@ bool	BitcoinExchange::check_value(std::string num)
 		if (num[idx] == '.')
 		{
 			if (flag == false)
+			{
+				this->dateBadInput(num);
 				return (false);
+			}
 			flag = false;
 			continue;
 		}
+		this->dateBadInput(num);
 		return (false);
 	}
 	if  (value > INT_MAX)
