@@ -19,7 +19,7 @@ int main(int ac, char *av[])
 	}
 	catch(std::exception& e)
 	{
-		std::cout << e.what() << '\n';
+		std::cerr << e.what() << '\n';
 	}
 	return (0);	
 }

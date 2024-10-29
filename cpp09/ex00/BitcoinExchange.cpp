@@ -114,9 +114,10 @@ int	BitcoinExchange::get_date(std::string &line)
 void	BitcoinExchange::find_data(int date, double value, std::string date_s)
 {
 	double pre_value = data.begin()->second;
+
 	for (std::map<int, double>::iterator ite = data.begin(); ite != data.end(); ite++)
 	{
-		if (date < ite->first)
+		if (date <= ite->first)
 			break;
 		pre_value = ite->second;
 	}
@@ -162,6 +163,11 @@ void	BitcoinExchange::dataParse(std::string line, int mode)
 		this->dateBadInput(line);
 		return ;
 	}
+	if (mode == 2 && date < data.begin()->first)
+	{
+		this->dateBadInput(error);
+		return ;
+	}
 	if (mode == 1)
 		this->data.insert(std::make_pair(date, value_f));
 	else
@@ -174,7 +180,6 @@ void	BitcoinExchange::getData(std::string filename, int mode)
 	std::string		line;
 	std::ifstream	readFile;
 
-	//std::cout<<"hi"<<std::endl;
 	readFile.open(filename);
 	if (readFile.is_open())
 	{
@@ -236,22 +241,22 @@ bool	BitcoinExchange::check_value(std::string num)
 
 void	BitcoinExchange::dateBadInput(std::string error)
 {
-	std::cout<<"Error: bad input => "<<error<<std::endl;
+	std::cerr<<"Error: bad input => "<<error<<std::endl;
 }
 
 void	BitcoinExchange::negativeNumError(void)
 {
-	std::cout<<"Error: not a positive number."<<std::endl;
+	std::cerr<<"Error: not a positive number."<<std::endl;
 }
 
 void	BitcoinExchange::tooLargeError(void)
 {
-	std::cout<<"Error: too large a number."<<std::endl;
+	std::cerr<<"Error: too large a number."<<std::endl;
 }
 
 void	BitcoinExchange::wrongInputStyle(void)
 {
-	std::cout<<"Error : wrong input style."<<std::endl;
+	std::cerr<<"Error : wrong input style."<<std::endl;
 }
 
 
