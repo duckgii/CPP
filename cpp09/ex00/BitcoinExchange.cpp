@@ -43,10 +43,15 @@ bool check_yoon(int year)
 	return (false);
 }
 
+int	BitcoinExchange::dateError(std::string	errmsg)
+{
+	this->dateBadInput(errmsg);
+	return (0);
+}
+
 int	BitcoinExchange::get_date(std::string &line)
 {
 	std::stringstream input_date;
-	std::stringstream ss;
 	std::string	date;
 	std::string	temp;
 	std::string error;
@@ -60,53 +65,29 @@ int	BitcoinExchange::get_date(std::string &line)
 	{
 		getline(input_date, temp, '-');
 		if (temp == "")
-		{
-			this->dateBadInput(error);
-			return (0);
-		}
+			return (this->dateError(error));
 		date += temp;
 	}
-	if (getline(input_date, temp, '-'))
-	{
-		this->dateBadInput(error);
-		return (0);
-	}
-	if (static_cast<int>(date.length()) != 8)
-	{
-		this->dateBadInput(error);
-		return (0);
-	}
+	if (getline(input_date, temp, '-') || static_cast<int>(date.length()) != 8)
+		return (this->dateError(error));
 	for (int i = 0; i < 8; i++)
 	{
 		if (!isdigit(date[i]))
-		{
-			this->dateBadInput(error);
-			return (0);
-		}
+			return (this->dateError(error));
 	}
-	ss<<date;
-	ss>>ret;
+	ret = std::atoi(date.c_str());
 	if (ret / 10000 > 2024 || (ret % 10000) / 100 > 12)
-	{
-		this->dateBadInput(error);
-		return (0);
-	}
+		return (this->dateError(error));
 	check = ret % 100;
 	if (check > check_day[(ret % 10000) / 100])
 	{
 		if (check_yoon(ret / 10000))
 		{
 			if ((ret % 10000) / 100 == 2 && check > 29)
-			{
-				this->dateBadInput(error);
-				return (0);
-			}
+				return (this->dateError(error));
 		}
 		else
-		{
-			this->dateBadInput(error);
-			return (0);
-		}
+			return (this->dateError(error));
 	}
 	return (ret);
 }
@@ -126,19 +107,15 @@ void	BitcoinExchange::find_data(int date, double value, std::string date_s)
 
 void	BitcoinExchange::dataParse(std::string line, int mode)
 {
-	std::stringstream all_input;
-	std::string		date_line;
-	std::string value_s;
-	std::string error;
-	double 		value_f;
-	char	dilimiter;
-	std::string	temp;
-	int	date = 0;
+	std::stringstream 	all_input;
+	std::string			date_line;
+	std::string 		value_s;
+	std::string 		error;
+	double 				value_f;
+	char				dilimiter;
+	int					date = 0;
 
-	if (mode == 1)
-		dilimiter = ',';
-	else
-		dilimiter = ' ';
+	dilimiter = (mode == 1 ? ',' : ' ');
 	all_input<<line;
 	getline(all_input, date_line, dilimiter);
 	error = date_line;
@@ -149,25 +126,16 @@ void	BitcoinExchange::dataParse(std::string line, int mode)
 	{
 		getline(all_input, date_line, dilimiter);
 		if (date_line != "|")
-		{
-			this->dateBadInput(line);
-			return ;
-		}
+			return(this->dateBadInput(line));
 	}
 	getline(all_input, value_s, dilimiter);
 	if (check_value(value_s) == false)
 		return ;
 	value_f = std::strtod(value_s.c_str(), 0);
 	if (getline(all_input, value_s, dilimiter) || value_s.length() == 0)
-	{
-		this->dateBadInput(line);
-		return ;
-	}
+		return (this->dateBadInput(line));
 	if (mode == 2 && date < data.begin()->first)
-	{
-		this->dateBadInput(error);
-		return ;
-	}
+		return (this->dateBadInput(error));
 	if (mode == 1)
 		this->data.insert(std::make_pair(date, value_f));
 	else

@@ -29,12 +29,14 @@ class BitcoinExchange
 		void	find_data(int date, double value, std::string date_s);
 		void	getData(std::string filename, int mode);
 		void	dataParse(std::string line, int mode);
+		int		get_date(std::string &line);
+		bool	check_value(std::string num);
+		
+		int		dateError(std::string	errmsg);
 		void	dateBadInput(std::string error);
 		void	negativeNumError(void);
 		void	tooLargeError(void);
 		void	wrongInputStyle(void);
-		int		get_date(std::string &line);
-		bool	check_value(std::string num);
 };
 
 #endif
