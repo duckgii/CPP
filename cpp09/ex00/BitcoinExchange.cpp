@@ -98,9 +98,11 @@ void	BitcoinExchange::find_data(int date, double value, std::string date_s)
 
 	for (std::map<int, double>::iterator ite = data.begin(); ite != data.end(); ite++)
 	{
-		if (date <= ite->first)
+		if (date < ite->first)
 			break;
 		pre_value = ite->second;
+		if (date == ite->first)
+			break;
 	}
 	std::cout<<date_s<<" => "<<value<<" = "<<static_cast<double>(value * pre_value)<<std::endl;
 }
@@ -155,7 +157,7 @@ void	BitcoinExchange::getData(std::string filename, int mode)
 		if ((mode == 1 && line != "date,exchange_rate") || (mode == 2 && line != "date | value"))
 		{
 			readFile.close();
-			throw BitcoinExchange::WrongInputException(); //-> 못 읽었을 경우에는 다음 파싱에서도 에러처리 해야함 ...?
+			throw BitcoinExchange::WrongInputException();
 		}
 		while (!readFile.eof())
 		{
@@ -177,9 +179,7 @@ bool	BitcoinExchange::check_value(std::string num)
 
 	for (int idx = 0; idx < static_cast<int>(num.size()); idx++)
 	{
-		if (idx == 0 && num[idx] == '-')
-			continue;
-		if (isdigit(num[idx]))
+		if ((idx == 0 && num[idx] == '-') || isdigit(num[idx]))
 			continue;
 		if (num[idx] == '.')
 		{
