@@ -60,15 +60,43 @@ bool cmp(int b, std::pair<int, int> a)
 	return (a.first > b);
 }
 
+std::vector<std::pair<int, int> > PmergeMe::doInsert_v(std::vector<std::pair<int, int> > check, std::vector<std::pair<int, int> > main, std::vector<std::pair<int, int> > sub)
+{
+	std::vector<std::pair<int, int> >	ret = check;
+	int		yacop = 1;
+	int 	pre = -1;
+	int 	t = 0;
+	int 	idx = 0;
+
+	for (int i = 0 ;i < static_cast<int>(main.size()); i++)
+	{
+		ret[i].second = main[ret[i].second].second;
+	}
+	for (int count = 0; count < static_cast<int>(check.size()); count++)
+	{
+		if (idx == pre)
+		{
+			pre = t;
+			yacop += 1;
+			idx = std::pow(2, yacop) - count - 1;
+			t = idx;
+		}
+		if (idx >= static_cast<int>(check.size()))
+			idx = check.size() - 1;
+		ret.insert(upper_bound(ret.begin(), ret.begin() + std::min(static_cast<int>(ret.size()), static_cast<int>(std::pow(2, yacop))), sub[check[idx].second].first, cmp), sub[check[idx].second]);
+		idx--;
+	}
+	if (main.size() < sub.size())
+		ret.insert(upper_bound(ret.begin(), ret.end(), sub[sub.size() - 1].first, cmp), sub[sub.size() - 1]);
+	return (ret);
+}
+
 std::vector<std::pair<int, int> > PmergeMe::recur_v(std::vector<std::pair<int, int> > input)
 {
 	std::vector<std::pair<int, int> > main;
 	std::vector<std::pair<int, int> > sub;
 	std::vector<std::pair<int, int> > ret;
 	std::vector<std::pair<int, int> > check;
-	int		yacop = 1;
-	int 	pre = -1;
-	int 	t = 0;
 
 	for (int idx = 0; idx < static_cast<int>(input.size()); idx++)
 	{
@@ -96,28 +124,7 @@ std::vector<std::pair<int, int> > PmergeMe::recur_v(std::vector<std::pair<int, i
 		return (main);
 	}
 	check = recur_v(main);
-	ret = check;
-	for (int i = 0 ;i < static_cast<int>(main.size()); i++)
-	{
-		ret[i].second = main[ret[i].second].second;
-	}
-	int idx = 0;
-	for (int count = 0; count < static_cast<int>(check.size()); count++)
-	{
-		if (idx == pre)
-		{
-			pre = t;
-			yacop += 1;
-			idx = std::pow(2, yacop) - count - 1;
-			t = idx;
-		}
-		if (idx >= static_cast<int>(check.size()))
-			idx = check.size() - 1;
-		ret.insert(upper_bound(ret.begin(), ret.begin() + std::min(static_cast<int>(ret.size()), static_cast<int>(std::pow(2, yacop))), sub[check[idx].second].first, cmp), sub[check[idx].second]);
-		idx--;
-	}
-	if (main.size() < sub.size())
-		ret.insert(upper_bound(ret.begin(), ret.end(), sub[sub.size() - 1].first, cmp), sub[sub.size() - 1]);
+	ret = doInsert_v(check, main, sub);
 	return (ret);
 }
 
@@ -127,9 +134,6 @@ std::deque<std::pair<int, int> > PmergeMe::recur_d(std::deque<std::pair<int, int
 	std::deque<std::pair<int, int> > sub;
 	std::deque<std::pair<int, int> > ret;
 	std::deque<std::pair<int, int> > check;
-	int		yacop = 1;
-	int 	pre = -1;
-	int 	t = 0;
 
 	for (int idx = 0; idx < static_cast<int>(input.size()); idx++)
 	{
@@ -157,12 +161,22 @@ std::deque<std::pair<int, int> > PmergeMe::recur_d(std::deque<std::pair<int, int
 		return (main);
 	}
 	check = recur_d(main);
-	ret = check;
+	ret = doInsert_d(check, main, sub);
+	return (ret);
+}
+
+std::deque<std::pair<int, int> > PmergeMe::doInsert_d(std::deque<std::pair<int, int> > check, std::deque<std::pair<int, int> > main, std::deque<std::pair<int, int> > sub)
+{
+	std::deque<std::pair<int, int> >	ret = check;
+	int		yacop = 1;
+	int 	pre = -1;
+	int 	t = 0;
+	int 	idx = 0;
+
 	for (int i = 0 ;i < static_cast<int>(main.size()); i++)
 	{
 		ret[i].second = main[ret[i].second].second;
 	}
-	int idx = 0;
 	for (int count = 0; count < static_cast<int>(check.size()); count++)
 	{
 		if (idx == pre)
@@ -190,12 +204,6 @@ void	PmergeMe::rundeque()
 	start = clock();
 	ret = recur_d(container_d);
 	finish = clock();
-	//std::cout<<"After:  ";
-	//for (int i = 0; i < static_cast<int>(ret.size()); i++)
-	//{
-	//	std::cout<<ret[i].first<<" ";
-	//}
-	//std::cout<<"\n";
 	std::cout<<"Time to process a range of 5 elements with std::deque : "<<static_cast<double>((finish - start) / static_cast<double>(100))<<" ms"<<std::endl;
 }
 

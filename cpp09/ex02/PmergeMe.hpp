@@ -27,8 +27,10 @@ class PmergeMe
 		void	inputData(std::string input);
 		void	runVector();
 		void	rundeque();
+		std::vector<std::pair<int, int> > doInsert_v(std::vector<std::pair<int, int> > check, std::vector<std::pair<int, int> > main, std::vector<std::pair<int, int> > sub);
 		std::vector<std::pair<int, int> > recur_v(std::vector<std::pair<int, int> > input);
 		std::deque<std::pair<int, int> > recur_d(std::deque<std::pair<int, int> > input);
+		std::deque<std::pair<int, int> > doInsert_d(std::deque<std::pair<int, int> > check, std::deque<std::pair<int, int> > main, std::deque<std::pair<int, int> > sub);
 		std::vector<std::pair<int, int> > getContainer_v() const;
 };
 
