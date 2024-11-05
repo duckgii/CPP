@@ -83,7 +83,7 @@ std::vector<std::pair<int, int> > PmergeMe::doInsert_v(std::vector<std::pair<int
 		}
 		if (idx >= static_cast<int>(check.size()))
 			idx = check.size() - 1;
-		ret.insert(upper_bound(ret.begin(), ret.begin() + std::min(static_cast<int>(ret.size()), static_cast<int>(std::pow(2, yacop))), sub[check[idx].second].first, cmp), sub[check[idx].second]);
+		ret.insert(upper_bound(ret.begin(), ret.begin() + std::min(static_cast<int>(ret.size()), static_cast<int>(std::pow(2, yacop) - 1)), sub[check[idx].second].first, cmp), sub[check[idx].second]);
 		idx--;
 	}
 	if (main.size() < sub.size())
@@ -188,7 +188,7 @@ std::deque<std::pair<int, int> > PmergeMe::doInsert_d(std::deque<std::pair<int, 
 		}
 		if (idx >= static_cast<int>(check.size()))
 			idx = check.size() - 1;
-		ret.insert(upper_bound(ret.begin(), ret.begin() + std::min(static_cast<int>(ret.size()), static_cast<int>(std::pow(2, yacop))), sub[check[idx].second].first, cmp), sub[check[idx].second]);
+		ret.insert(upper_bound(ret.begin(), ret.begin() + std::min(static_cast<int>(ret.size()), static_cast<int>(std::pow(2, yacop) - 1)), sub[check[idx].second].first, cmp), sub[check[idx].second]);
 		idx--;
 	}
 	if (main.size() < sub.size())
