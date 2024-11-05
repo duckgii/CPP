@@ -2,6 +2,8 @@
 #include <fstream>
 #include <cctype>
 #include <sstream>
+#include <cstdlib>
+#include <climits>
 
 const char* BitcoinExchange::OpenErrorException::what() const throw()
 {
@@ -150,7 +152,7 @@ void	BitcoinExchange::getData(std::string filename, int mode)
 	std::string		line;
 	std::ifstream	readFile;
 
-	readFile.open(filename);
+	readFile.open(filename.c_str());
 	if (readFile.is_open())
 	{
 		getline(readFile, line);
