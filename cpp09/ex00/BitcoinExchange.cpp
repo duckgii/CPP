@@ -228,5 +228,3 @@ void	BitcoinExchange::wrongInputStyle(void)
 {
 	std::cerr<<"Error : wrong input style."<<std::endl;
 }
-
-
