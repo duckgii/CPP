@@ -52,7 +52,7 @@ void	PmergeMe::runVector()
 		std::cout<<ret[i].first<<" ";
 	}
 	std::cout<<"\n";
-	std::cout<<"Time to process a range of 5 elements with std::vector : "<<static_cast<double>((finish - start) / static_cast<double>(100))<<" ms"<<std::endl;
+	std::cout<<"Time to process a range of "<<ret.size()<<" elements with std::vector : "<<static_cast<double>((finish - start) / static_cast<double>(100))<<" ms"<<std::endl;
 }
 
 bool cmp(int b, std::pair<int, int> a)
@@ -204,7 +204,7 @@ void	PmergeMe::rundeque()
 	start = clock();
 	ret = recur_d(container_d);
 	finish = clock();
-	std::cout<<"Time to process a range of 5 elements with std::deque : "<<static_cast<double>((finish - start) / static_cast<double>(100))<<" ms"<<std::endl;
+	std::cout<<"Time to process a range of "<<ret.size()<<" elements with std::deque : "<<static_cast<double>((finish - start) / static_cast<double>(100))<<" ms"<<std::endl;
 }
 
 std::vector<std::pair<int, int> > PmergeMe::getContainer_v() const
