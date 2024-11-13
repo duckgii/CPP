@@ -196,7 +196,7 @@ bool	BitcoinExchange::check_value(std::string num)
 		this->dateBadInput(num);
 		return (false);
 	}
-	if  (value > INT_MAX)
+	if  (value > 1000)
 	{
 		tooLargeError();
 		return (false);
